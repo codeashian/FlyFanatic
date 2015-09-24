@@ -1,11 +1,21 @@
+require 'Rspotify'
+
 class WelcomeController < ApplicationController
 
+
 	def index
-		@artist = params[:artist]
 		
+		if params[:artist] != nil
+			artist = params[:artist].tr('åäö','aao')	#@artists = RSpotify::Artist.search(params[:artist_name]).first
+			@artist = RSpotify::Artist.search(artist).take(5)
+		end
+
 	end
 
 	def show 
-		@artist = params[:artist]
+
+		@artist = RSpotify::Artist.find(params[:id])
+
 	end
+
 end

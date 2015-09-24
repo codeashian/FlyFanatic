@@ -46,5 +46,9 @@ group :development do
   gem 'spring'
 end
 
+gem 'paperclip'
+
 gem 'devise'
+
+gem 'rspotify'
 
