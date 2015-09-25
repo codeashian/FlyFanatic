@@ -1,3 +1,5 @@
+require 'RSpotify'
+
 class ProfileController < ApplicationController
 
 	def index
@@ -8,12 +10,7 @@ class ProfileController < ApplicationController
 	def favorites
 		@favorites = Favorite.where(:user_id => current_user.id)
 
-		@artists = []
-		@favorites.each do |f|
-			@artists = @artists.push(RSpotify::Artist.find(f.artist))
-		end
-
-		@artists
+		@favs = current_user.favorites
 
 		
 

@@ -52,3 +52,4 @@ gem 'devise'
 
 gem 'rspotify'
 
+

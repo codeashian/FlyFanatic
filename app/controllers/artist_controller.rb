@@ -13,14 +13,31 @@ class ArtistController < ApplicationController
 
   def add_favorite 
 
-  	favorite = Favorite.new(:name => params)
-  	favorite.name = params[:id]
-  	favorite.artist = params[:id]
-  	favorite.user_id = current_user.id
-  	favorite.save
+      # if there is existing artist
+      begin RSpotify::Artist.find(params[:id]) 
+        
+        f = Favorite.new
+        f.name = params[:id]
+        f.user_id = current_user.id
+        f.artist = params[:id]
+        
+        #save artist-favorite
+        if f.save
+          flash[:notice] = "Added new favorite"
+        else
+          flash[:notice] = "Could not add"
+        end
 
-  	redirect_to(:action => 'index')
-  	#fav.name = RSpotify::Artist.find(params[:id])
+        redirect_to(:action => 'show', :controller => 'artist', :id => params[:id])
 
-  end 
+        rescue 
+        flash[:notice] = "nope it didnt work to save "
+        redirect_to(:action => 'index')
+        
+      end
+
+         
+   end
+  
+
 end

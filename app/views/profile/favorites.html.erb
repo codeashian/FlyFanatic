@@ -1,4 +1,7 @@
-<% @favorites.each do |f| %>
+<% @favs.each do |f| %>
 	<%=  f.artist  %> <br> 
 	<%= image_tag(RSpotify::Artist.find(f.artist).images.first['url']) %>
 <% end %>
+
+
+<%= @artists %>

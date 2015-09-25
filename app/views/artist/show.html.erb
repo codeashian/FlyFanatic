@@ -1,14 +1,11 @@
-<h1>Artists#show</h1>
-<p>Find me in app/views/artists/show.html.erb</p>
-
 <h1> <%= @artist.name %> </h1>
 
-<%= @artist.methods %>
 
 
-
-<%= link_to @artist.name, {:action => 'add_favorite', :id => @artist.id} %> <br>
-	
+<% if user_signed_in? %>
+<%= button_to "Add favorite", { action: "add_favorite", id: @artist.id },
+                                method: :post, data: { confirm: "Are you sure?" } %>
+<% end %>
 
 
 
