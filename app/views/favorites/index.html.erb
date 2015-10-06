@@ -1,0 +1,4 @@
+<% @favs.each do |f| %>
+	<%= link_to f.name, favorite_path(:id => f.name) %> <br>
+	
+<% end %>

@@ -11,7 +11,7 @@ hej
 <% if @artist %>
 	<% @artist.each do |a| %>
 	
-	<%= link_to a.name, artist_path(a.id) %> <br>
+	<%= link_to a.name, artist_path(a.name) %> <br>
 
 <% end %>
 <% end %>

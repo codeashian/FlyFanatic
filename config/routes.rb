@@ -19,13 +19,14 @@ get 'profile/favorites' => 'profile#favorites'
 
 resources :artist
 post 'add_favorite' => 'artist#add_favorite'
+post 'add_instagram' => 'artist#add_instagram'
 
   # resources :artist do  
   #     post 'add_favorite/:id', :on => :collection
   # end
   
 
- 
+ resources :favorites
 
 
   #match '/users/:id', :to => 'welcome#show', :as => :user, :via => :get

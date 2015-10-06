@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150922191044) do
+ActiveRecord::Schema.define(version: 20150930162346) do
 
   create_table "favorites", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "user_id"
     t.string   "name"
-    t.string   "artist"
+    t.string   "spotify_id"
+    t.string   "instagram_id", default: "0"
   end
 
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id"

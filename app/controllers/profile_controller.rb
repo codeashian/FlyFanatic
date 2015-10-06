@@ -8,9 +8,7 @@ class ProfileController < ApplicationController
 	end
 
 	def favorites
-		@favorites = Favorite.where(:user_id => current_user.id)
 
-		@favs = current_user.favorites
 
 		
 

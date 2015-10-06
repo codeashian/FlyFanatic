@@ -1,6 +1,6 @@
 <% @favs.each do |f| %>
-	<%=  f.artist  %> <br> 
-	<%= image_tag(RSpotify::Artist.find(f.artist).images.first['url']) %>
+	<%=  f.name  %> <br> 
+	<%= image_tag(RSpotify::Artist.find(f.spotify_id).images.first['url']) %>
 <% end %>
 
 

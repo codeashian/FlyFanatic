@@ -1,14 +1,22 @@
-<h1> <%= @artist.name %> </h1>
 
+<h1> <%= @artist %> </h1>
+	
 
 
 <% if user_signed_in? %>
-<%= button_to "Add favorite", { action: "add_favorite", id: @artist.id },
+
+
+<% if !current_user.favorites.include?(@artist) %> 
+
+<%= button_to "Add favorite", { action: "add_favorite", id: @artist.name },
                                 method: :post, data: { confirm: "Are you sure?" } %>
 <% end %>
+
 
 
 
 <% @artist.albums(country: 'US').each do |album| %>
 <%= album.name %> <br>
 <% end %>
+
+<% end %> 

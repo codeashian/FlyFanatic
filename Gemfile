@@ -52,4 +52,6 @@ gem 'devise'
 
 gem 'rspotify'
 
+gem 'instagram'
+
 

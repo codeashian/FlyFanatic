@@ -1,25 +1,32 @@
 require 'RSpotify'
 
 class ArtistController < ApplicationController
+  
+  before_action :check_if_is_favorite
+
   def index
 
   end
 
   def show
+    
+      @artist = RSpotify::Artist.search(params[:id]).first
 
-  	@artist = RSpotify::Artist.find(params[:id])
+    
 
   end
 
   def add_favorite 
 
       # if there is existing artist
-      begin RSpotify::Artist.find(params[:id]) 
-        
+      begin RSpotify::Artist.search(params[:id]) 
+
+        artist = RSpotify::Artist.search(params[:id]).first
+
         f = Favorite.new
-        f.name = params[:id]
+        f.spotify_id = artist.id
         f.user_id = current_user.id
-        f.artist = params[:id]
+        f.name = artist.name       
         
         #save artist-favorite
         if f.save
@@ -33,11 +40,20 @@ class ArtistController < ApplicationController
         rescue 
         flash[:notice] = "nope it didnt work to save "
         redirect_to(:action => 'index')
-        
+        end
+    
+   end
+
+   def check_if_is_favorite
+      found = current_user.favorites.find_by spotify_id: params[:id]
+      
+      if found != nil
+        redirect_to(:action => 'show', :controller => 'favorites', :id => params[:id])
       end
 
-         
    end
+
+   
   
 
 end

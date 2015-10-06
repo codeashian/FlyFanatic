@@ -1,0 +1,10 @@
+<%= @favorite.name %>
+
+
+
+<%= form_for @favorite do |f| %> 
+	<%= f.label "hej" %> 
+	<%= f.text_field(:instagram_id) %> 
+
+	<%= f.submit "Save changes", class: "btn btn-primary" %>
+<% end %>
