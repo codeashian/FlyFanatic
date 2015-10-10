@@ -1,3 +1,49 @@
 // Place all the styles related to the artists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.artist-header {
+	overflow: auto;
+	min-height: 400px;
+	.title {
+		display: table;
+		height: 400px;
+		text-align: center;
+		background-color: #191919;
+		h1 {
+			font-size: 100px;
+			display: table-cell;
+			vertical-align: middle;
+			color: white;
+		}
+	} 
+	.head-image {
+		min-height: 400px;
+		background-size: 100% ;
+		background-position: center;
+	}
+}
+
+
+.artist-page .column-1 {
+	display: table;
+	text-align: center;
+	h2 {
+		display: table-cell;
+		vertical-align: middle;
+		font-size: 130px;
+	}
+}
+
+.insta-box {
+	background-color: black;
+	.insta-img {
+	width: 33.33333%;	
+	margin-left: -3px;
+	margin-bottom: -3px;	
+	border: 6px solid black;
+}
+}
+

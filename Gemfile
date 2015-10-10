@@ -54,4 +54,5 @@ gem 'rspotify'
 
 gem 'instagram'
 
+gem 'bandsintown'
 

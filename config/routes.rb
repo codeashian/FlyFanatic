@@ -27,7 +27,7 @@ post 'add_instagram' => 'artist#add_instagram'
   
 
  resources :favorites
-
+  match '/search', to: "favorites#search", via: "post"
 
   #match '/users/:id', :to => 'welcome#show', :as => :user, :via => :get
 

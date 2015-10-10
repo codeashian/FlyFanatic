@@ -10,6 +10,71 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *  
  *= require_tree .
  *= require_self
  */
+
+* {
+	color: black;
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+}
+
+.clearfix {
+	clear: both;
+}
+
+a {
+	text-decoration: none;
+}
+
+
+#content {
+	position: absolute;
+	width: 100%;
+	padding-left: 70px;
+}
+
+.column-12 {
+	width: 50%;	
+	float: left;
+
+}
+
+.column-1 {
+	width: 100%;
+	background-color: gray;
+}
+
+
+.artist-header {
+	overflow: auto;
+	.column-12 {
+		background-color: blue;
+		display: table;
+		text-align: center;
+		h1.artist-title {
+			font-size: 100px;
+			display: table-cell;
+			vertical-align: middle;
+		}
+	} 
+	.head-image {
+		min-height: 300px;
+	}
+}
+
+
+.artist-page .column-1 {
+	display: table;
+	text-align: center;
+	h2 {
+		display: table-cell;
+		vertical-align: middle;
+		font-size: 130px;
+	}
+}

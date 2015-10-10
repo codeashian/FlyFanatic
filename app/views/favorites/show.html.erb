@@ -1,10 +1,42 @@
-<%= @favorite.name %>
+<div class="wrapper favorite-page">
+	<div class="artist-header">
+		
+		<div class="column-12 title"> 
+			<h1> <%= @favorite.name %> </h1>
+		</div>
+		
+		<div class="column-12 head-image" style="background-image: url(<%= @artist.images.first['url'] %>"> 
+		</div>
+
+	</div>
+
+
+	<div class="clearfix"></div>
+
+	<div class="column-12 insta-box">
+		<% if @favorite.instagram_id == "0" %>
+			<%= form_for @favorite do |f| %> 
+				<%= f.label "hej" %> 
+				<%= f.text_field(:instagram_id) %> 
+
+				<%= f.submit "Save changes", class: "btn btn-primary" %>
+				<% end %> 
+			<% else %>
+					
+				<% @instagram_images.each do |instagram| %>
+
+				   <%= image_tag instagram.images.first.last.url , :class => 'insta-img' %>
+
+				<% end %>
+
+			<% end %>
+
+	</div>
+</div>
+
+	
 
 
 
-<%= form_for @favorite do |f| %> 
-	<%= f.label "hej" %> 
-	<%= f.text_field(:instagram_id) %> 
 
-	<%= f.submit "Save changes", class: "btn btn-primary" %>
-<% end %>
+

@@ -25,3 +25,4 @@ $("#favor").click(function() {
     }
   })
 })
+

@@ -10,7 +10,9 @@ class ArtistController < ApplicationController
 
   def show
     
-      @artist = RSpotify::Artist.search(params[:id]).first
+      @artist    = RSpotify::Artist.search(params[:id]).first
+      #@instagram = Instagram.user_recent_media(, {:count => 1})
+
 
     
 
@@ -45,10 +47,13 @@ class ArtistController < ApplicationController
    end
 
    def check_if_is_favorite
-      found = current_user.favorites.find_by spotify_id: params[:id]
-      
-      if found != nil
-        redirect_to(:action => 'show', :controller => 'favorites', :id => params[:id])
+
+      if user_signed_in?
+        found = current_user.favorites.find_by name: params[:id]
+        
+        if found != nil
+          redirect_to(:action => 'show', :controller => 'favorites', :id => params[:id])
+        end
       end
 
    end

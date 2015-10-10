@@ -1,0 +1,27 @@
+#nav {
+	background: black;
+	height: 100%;
+	width: 70px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+
+}
+
+.nav-box {
+	height: 70px;
+	width: 70px;
+	display: table;
+	text-align: center;
+
+	a, p {
+		display: table-cell;
+		vertical-align: middle;
+		color: white;
+	}
+
+	&:hover {
+		background-color: red;
+	}
+}

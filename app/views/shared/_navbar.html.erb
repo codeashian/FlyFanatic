@@ -1,0 +1,22 @@
+<div id="nav">
+        <div class="nav-box"> <%= link_to "Start", root_path %> </div>
+
+
+
+    <% if user_signed_in? %>
+        
+        <div class="nav-box"> <%= link_to current_user.first_name, profile_path %> </div>
+
+        <div class="nav-box"> <%= link_to "Sign out", destroy_user_session_path, :method => :delete %> </div>
+
+        <div class="nav-box"> <%= link_to "Favorites", favorites_path %> </div>
+   
+    <% else %>
+
+        <div class="nav-box"> <%= link_to 'Register', new_user_registration_path %>  </div>
+		<div class="nav-box"> <%= link_to "Sign in", user_session_path %> </div>
+        
+
+        
+    <% end %>
+</div>
