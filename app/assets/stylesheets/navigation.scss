@@ -2,7 +2,7 @@
 	background: black;
 	height: 100%;
 	width: 70px;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	z-index: 1;
@@ -14,6 +14,7 @@
 	width: 70px;
 	display: table;
 	text-align: center;
+	background-color: black;
 
 	a, p {
 		display: table-cell;
@@ -24,4 +25,26 @@
 	&:hover {
 		background-color: red;
 	}
+
+	i {
+		color: white;
+		font-size: 23px;
+	}
+}
+
+.hidden-nav-box {
+	height: 70px;
+	width: 70px;
+	position: absolute;
+	left: -90px;
+	display: table;
+	p {
+		display: table-cell;
+	vertical-align: middle;
+
+	}
+}
+
+.nav-box:hover .hidden-nav-box {
+	left: 70px;
 }

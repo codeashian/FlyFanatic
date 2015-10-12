@@ -16,6 +16,8 @@ devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out =
 get 'profile' => 'profile#index'
 get 'profile/favorites' => 'profile#favorites'
 
+get 'search' => 'welcome#show'
+
 
 resources :artist
 post 'add_favorite' => 'artist#add_favorite'

@@ -1,1 +1,3 @@
-require 'bandsintown'
+require "bandsintown"
+
+Bandsintown.app_id = 'flyfanatic'

@@ -54,5 +54,9 @@ gem 'rspotify'
 
 gem 'instagram'
 
+gem 'gigatools'
+
 gem 'bandsintown'
+
+gem 'twitter'
 

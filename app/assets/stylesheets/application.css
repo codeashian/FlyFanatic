@@ -18,10 +18,12 @@
 * {
 	color: black;
 	box-sizing: border-box;
+
 }
 
 body {
 	margin: 0;
+	font-family: 'helvetica';
 }
 
 .clearfix {
@@ -37,6 +39,8 @@ a {
 	position: absolute;
 	width: 100%;
 	padding-left: 70px;
+	background-color: #191919;
+	min-height: 100%;
 }
 
 .column-12 {

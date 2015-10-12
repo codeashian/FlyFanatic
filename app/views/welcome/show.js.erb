@@ -1,1 +1,1 @@
-$('.hej').append("<%= j (@artist) %>");
+$('#container').html('<%= j render partial: 'welcome/show', locals: { artist: @artist } %>')

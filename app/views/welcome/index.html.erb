@@ -1,20 +1,21 @@
-hej
-
-<%= form_tag '/', method: 'get', id: "search" do %>
+<div class="wrapper first-page">
+	
+<%= form_tag '/search', remote: 'true', method: 'get', id: "search" do %>
 	<%= text_field_tag(:artist) %>
 	<%= submit_tag('Search', class: "btn btn-success") %>
 <% end %>
 
 
+	<div id='container'> 
 
+		<div class="start-info">
+			<h2> FLY FANATIC </h2>
+			<h3> the fanpage is back. You will get the ability to follow 
+				 and customize your own tiny fan page for your favorite. Go ahead and search!</h3>
+		</div>
 
-<% if @artist %>
-	<% @artist.each do |a| %>
-	
-	<%= link_to a.name, artist_path(a.name) %> <br>
-
-<% end %>
-<% end %>
+	</div>
+</div>
 
 
 

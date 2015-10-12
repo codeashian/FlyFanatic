@@ -13,26 +13,48 @@
 
 	<div class="clearfix"></div>
 
-	<div class="column-12 insta-box">
-		<% if @favorite.instagram_id == "0" %>
-			<%= form_for @favorite do |f| %> 
-				<%= f.label "hej" %> 
-				<%= f.text_field(:instagram_id) %> 
-
-				<%= f.submit "Save changes", class: "btn btn-primary" %>
-				<% end %> 
-			<% else %>
-					
+	<div class="favorites-row">
+		
+		<div class="column-12 social-form">
+			<% if @favorite.instagram_id == "" %>
+				<!-- Instagram form -->
+					<%= form_for @favorite do |f| %> 
+						<%= f.label "Add Artist Instagram Account" %> <br>
+						<%= f.text_field(:instagram_id) %> <br>
+						<%= hidden_field_tag 'name', @favorite.name %> 
+						<%= f.submit "Save changes", class: "btn btn-primary" %>
+					<% end %> 
+				<% else %>
+						<!-- Show instagram images -->
 				<% @instagram_images.each do |instagram| %>
-
-				   <%= image_tag instagram.images.first.last.url , :class => 'insta-img' %>
-
+					   <%= image_tag instagram.images.first.last.url , :class => 'insta-img' %>
+					<% end %>
 				<% end %>
 
+		</div>
+		<div class="column-12 social-form">
+			<% if @favorite.twitter_user == "" %>
+				<!--  show form for twitter -->
+					<%= form_for @favorite do |f| %> 
+						<%= f.label "Add Twitter Account" %> <br>
+						<%= f.text_field(:twitter_user) %> <br>
+						<%= hidden_field_tag 'name', @favorite.name %> 
+						<%= f.submit "Save changes", class: "btn btn-primary" %>
+					<% end %> 
+			<% else %>
+				<!-- show tweets -->
+				<% @tweets.each do |tweet| %>
+					<div class="tweet"> <%= tweet.text %> </div>
+				<% end %> %>
 			<% end %>
+		</div>
 
 	</div>
+	
+	<%= console %>
+
 </div>
+
 
 	
 

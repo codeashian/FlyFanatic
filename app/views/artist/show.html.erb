@@ -3,7 +3,7 @@
 	<div class="column-12"> 
 		<h1 class="artist-title"> <%= @artist.name %> </h1>
 	</div>
-	<div class="column-12 artist-head" style="background-image: url(<%= @artist.images.first['url'] %>"> 
+	<div class="column-12 artist-head" style="background-image: url(<%= !@artist.images.empty? ? @artist.images.first['url'] : "" %>"> 
 	</div>
 
 	<div class="clearfix"></div>
@@ -16,7 +16,6 @@
 	                               		<h2> I AM A FAN </h2>
 	                               </div> 
 		<% end %>  
-
 
 	 	<% end %>
 		

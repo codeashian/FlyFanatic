@@ -37,13 +37,45 @@
 	}
 }
 
-.insta-box {
+.social-form {
 	background-color: black;
+	min-height: 400px;
+	display: table;
+
 	.insta-img {
 	width: 33.33333%;	
 	margin-left: -3px;
 	margin-bottom: -3px;	
 	border: 6px solid black;
-}
+	
+	}
+	
+	form {
+		display: table-cell;
+		vertical-align: middle;
+		input[type="text"] {
+			height: 70px;
+			width: 50%;
+			margin-top: 20px;
+		}
+		label {
+			color: white;
+			margin-bottom: 20px;
+		}
+	}
 }
 
+.favorites-row {
+	width: 100%;
+	display: table;
+	text-align: center;
+}
+
+.tweet {
+	width: 100%;
+	color: white;
+	padding: 50px;
+	border-bottom: 1px solid gray;
+	text-align: left;
+
+}
