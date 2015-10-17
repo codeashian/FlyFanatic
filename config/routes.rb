@@ -27,8 +27,11 @@ post 'add_instagram' => 'artist#add_instagram'
   #     post 'add_favorite/:id', :on => :collection
   # end
   
-
+ get 'favorites/:id', to: 'favorites#show', constraints: { :id => /[^\/]+/ } 
+ get 'artist/:id', to: 'artist#show', constraints: { :id => /[^\/]+/ } 
  resources :favorites
+
+
   match '/search', to: "favorites#search", via: "post"
 
   #match '/users/:id', :to => 'welcome#show', :as => :user, :via => :get

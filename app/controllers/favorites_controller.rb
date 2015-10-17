@@ -1,9 +1,12 @@
 require 'twitter'
+require 'net/http'
+require 'uri'
+require 'bandsintown'
 
 class FavoritesController < ApplicationController
 
 
-	def index
+	def index 
 		@favorites = Favorite.where(:user_id => current_user.id)
 		@favs = current_user.favorites
 
@@ -16,19 +19,32 @@ class FavoritesController < ApplicationController
 
 		# get favorite artist from user by url parameters 
 		@artist = RSpotify::Artist.search(params[:id]).first
-		# get favorite
+		# current favorite
  		@favorite = current_user.favorites.where(:spotify_id => @artist.id).first
 
+
+    # if instagram_id exists
     if @favorite.instagram_id != ""
       @instagram_id     = Instagram.user_search(@favorite.instagram_id).first.id
       @instagram_images = Instagram.user_recent_media(@instagram_id).take(9)
     end
 
-    if @favorite.twitter_user != ""
-      @tweets = twitter.user_timeline(@favorite.twitter_user).take(6)
-    end
+    @instagram_users = Instagram.user_search(params[:id]).take(4)
 
-	end
+
+    # if twitter_user exists 
+    @tweets_search = twitter.user_search(params[:id].tr('åäö','aao')).take(4)
+
+    if @favorite.twitter_user != ""
+      @tweets_result = twitter.user_timeline(@favorite.twitter_user).take(4)
+    end 
+
+
+    # get events from bandsintown
+    @events = get_events(params[:id]).take(4)
+
+
+    end
 
   def create 
      begin RSpotify::Artist.search(params[:id]) 
@@ -90,4 +106,23 @@ class FavoritesController < ApplicationController
       return twitter
     end
    
+    def get_events(artist)
+        
+        artist = Bandsintown::Artist.new({
+          :name => artist
+        })
+        # create API-name
+        artist = artist.api_name 
+
+        # get artist url and parse to object-data
+        cont = Net::HTTP.get(URI.parse("http://api.bandsintown.com/artists/" + artist + "/events.json?api_version=2.0&app_id=flyfanatic"))
+        content = JSON.parse(cont)
+
+        if !content.include?("errors")
+          return content
+        else 
+          return []
+        end
+
+    end
 end

@@ -1,11 +1,13 @@
 <div class="wrapper favorite-page">
 	<div class="artist-header">
+
+
 		
 		<div class="column-12 title"> 
 			<h1> <%= @favorite.name %> </h1>
 		</div>
 		
-		<div class="column-12 head-image" style="background-image: url(<%= @artist.images.first['url'] %>"> 
+		<div class="column-12 head-image" style="background-image: url(<%= !@artist.images.empty? ? @artist.images.first['url'] : "n" %>"> 
 		</div>
 
 	</div>
@@ -17,13 +19,31 @@
 		
 		<div class="column-12 social-form">
 			<% if @favorite.instagram_id == "" %>
+			<h2 class="box-header">Add Instagram</h2>
 				<!-- Instagram form -->
+
+
+<!-- 					<p> Not any on these? </p>
 					<%= form_for @favorite do |f| %> 
 						<%= f.label "Add Artist Instagram Account" %> <br>
 						<%= f.text_field(:instagram_id) %> <br>
 						<%= hidden_field_tag 'name', @favorite.name %> 
 						<%= f.submit "Save changes", class: "btn btn-primary" %>
-					<% end %> 
+					<% end %>  -->
+
+					
+						<%= form_for @favorite do |f| %>
+							<% @instagram_users.each do |i| %>
+								<div class="radio-button">
+								<%= label_tag(:instagram_id, i.username) %>
+								<%= f.radio_button(:instagram_id, i.username) %><br>
+								<%= hidden_field_tag 'name', @favorite.name %> 	
+								</div>
+							<% end %> 
+							<%= f.submit "Save changes", class: "btn btn-primary" %>
+						<% end %> 
+			
+
 				<% else %>
 						<!-- Show instagram images -->
 				<% @instagram_images.each do |instagram| %>
@@ -35,25 +55,62 @@
 		<div class="column-12 social-form">
 			<% if @favorite.twitter_user == "" %>
 				<!--  show form for twitter -->
-					<%= form_for @favorite do |f| %> 
+					<h2 class="box-header">Add twitter</h2>
+				
+<!-- 					<%= form_for @favorite do |f| %> 
 						<%= f.label "Add Twitter Account" %> <br>
 						<%= f.text_field(:twitter_user) %> <br>
 						<%= hidden_field_tag 'name', @favorite.name %> 
 						<%= f.submit "Save changes", class: "btn btn-primary" %>
-					<% end %> 
+						<% end %>  -->
+
+					<%= form_for @favorite do |f| %>
+							<% @tweets_search.each do |t| %>
+								<div class="radio-button">
+								<%= label_tag(:twitter_user, t.username) %>
+								<%= f.radio_button(:twitter_user, t.username) %><br>
+								<%= hidden_field_tag 'name', @favorite.name %> 	
+								</div>
+							<% end %> 
+							<%= f.submit "Save changes", class: "btn btn-primary" %>
+						<% end %> 
+			
 			<% else %>
 				<!-- show tweets -->
-				<% @tweets.each do |tweet| %>
-					<div class="tweet"> <%= tweet.text %> </div>
-				<% end %> %>
+				<h2 class="box-header"><i class="icon ion-close-circled"></i><i class="icon ion-edit"></i>  Latest tweets </h2>
+				<% @tweets_result.each do |tweet| %>
+					<div class="tweet"> <%= tweet.text %>  </div>
+				<% end %>
 			<% end %>
 		</div>
-
 	</div>
-	
-	<%= console %>
+		<div class="clearfix"></div>
 
+	
+
+			<div class="column-12 events">
+					<div class="tweet"><h2 class="box-header"> <i class="icon ion-close-circled"></i><i class="icon ion-edit"></i> Upcoming tour dates </h2></div>
+				
+						<% @events.each do |event| %>
+							<div class="tweet">
+								 <%= event['title'] + " " + event['formatted_datetime'] %>
+							</div>
+						<% end %>
+				
+			</div>
+
+			<div class="column-12 events">
+				
+
+			</div>
+		</div>
+	</div>
+
+	<div class="media"> 				
+	<iframe src="https://embed.spotify.com/?uri=spotify:artist:<%= @artist.id %>" style="width: 100%;" frameborder="0" allowtransparency="true"></iframe> 
+	</div>
 </div>
+
 
 
 	

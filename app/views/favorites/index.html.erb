@@ -1,7 +1,9 @@
 <% @favs.each do |f| %>
-	<%= link_to f.name, favorite_path(:id => f.name) %> 
-	<%= link_to 'Delete', {:action => 'destroy', :id => f.id}, :method => 'delete' %>  <br>
+	<div class="favorite-artist-box">
+	<h2> <%= link_to f.name, favorite_path(:id => f.name) %> </h2><br>
+	<%= link_to 'Delete', {:action => 'destroy', :id => f.id}, :method => 'delete' %> 
+	</div>
 <% end %>
-<br>
+
 <!-- Search in favorites  -->
 
