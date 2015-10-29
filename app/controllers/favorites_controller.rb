@@ -2,11 +2,15 @@ require 'twitter'
 require 'net/http'
 require 'uri'
 require 'bandsintown'
+require 'bing-search'
 
 class FavoritesController < ApplicationController
 
+  caches_page :index, :show
+
 
 	def index 
+    expires_in 1.minute, public: true
 		@favorites = Favorite.where(:user_id => current_user.id)
 		@favs = current_user.favorites
 
@@ -15,13 +19,8 @@ class FavoritesController < ApplicationController
 
 	def show
 
-    twitter = twitter_api
-
-		# get favorite artist from user by url parameters 
-		@artist = RSpotify::Artist.search(params[:id]).first
 		# current favorite
- 		@favorite = current_user.favorites.where(:spotify_id => @artist.id).first
-
+ 		@favorite = current_user.favorites.where(:name => params[:id]).first
 
     # if instagram_id exists
     if @favorite.instagram_id != ""
@@ -29,32 +28,61 @@ class FavoritesController < ApplicationController
       @instagram_images = Instagram.user_recent_media(@instagram_id).take(9)
     end
 
-    @instagram_users = Instagram.user_search(params[:id]).take(4)
+    @insta_users = []
+    @instagram_users = Instagram.user_search(params[:id]).take(5)
+
+    # check if not private
+    @instagram_users.each do |i| 
+      begin Instagram.user_recent_media(i.id)
+        @insta_users.push(i)
+      rescue
+        puts "hej"
+      end 
+
+    end
+
+    BingSearch.account_key = '+UAV1IbOg4zDavRN+30Gey9a5EeipB91+BW3rR/3PeM'
+    @news_search = BingSearch.news(params[:id]).take(4)
 
 
+
+    twitter = twitter_api
     # if twitter_user exists 
     @tweets_search = twitter.user_search(params[:id].tr('åäö','aao')).take(4)
 
     if @favorite.twitter_user != ""
-      @tweets_result = twitter.user_timeline(@favorite.twitter_user).take(4)
+
+      tweets = twitter.user_timeline(@favorite.twitter_user).take(3)
+      @tweets_result = []
+      
+      tweets.each do |t| 
+          t.text.split.map { |x| x =~ URI::regexp ? make_link(x) : x }.join(" ")
+          @tweets_result.push(t)
+      end
     end 
 
 
     # get events from bandsintown
     @events = get_events(params[:id]).take(4)
 
+    expires_in 5.minute, public: true
 
-    end
+  end
+
+  def make_link(url)
+    '<a href="' + url + '">' + url + '</a>'
+  end
 
   def create 
      begin RSpotify::Artist.search(params[:id]) 
 
         artist = RSpotify::Artist.search(params[:id]).first
 
-        f = Favorite.new
+        f            = Favorite.new
         f.spotify_id = artist.id
-        f.user_id = current_user.id
-        f.name = artist.name       
+        f.user_id    = current_user.id
+        f.name       = artist.name
+        f.image      = artist.images.first['url']
         
         #save artist-favorite
         if f.save
@@ -80,6 +108,12 @@ class FavoritesController < ApplicationController
         else
         	redirect_to(:action => 'show', :id => params[:name])
         end       
+   end
+
+   def edit 
+
+    @favorite = current_user.favorites.where(:name => params[:id]).first
+
    end
 
    def destroy 
@@ -125,4 +159,5 @@ class FavoritesController < ApplicationController
         end
 
     end
+
 end

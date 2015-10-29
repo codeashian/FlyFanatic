@@ -1,0 +1,9 @@
+
+<div class="custom-search"> 
+	<%= form_for favorite do |f| %> 
+	 	<%= f.label "Add Twitter Account" %> <br>
+		<%= f.text_field(account) %> <br>
+		<%= hidden_field_tag 'name', favorite.name %> 
+		<%= f.submit "Save changes", class: "btn btn-primary" %>
+	<% end %> 
+</div>

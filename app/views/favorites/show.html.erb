@@ -1,117 +1,129 @@
 <div class="wrapper favorite-page">
-	<div class="artist-header">
 
-
-		
-		<div class="column-12 title"> 
+	<div class="artist-header">		
+		<div class="column-12 title-box"> 
 			<h1> <%= @favorite.name %> </h1>
+		</div>		
+		<div class="column-12 head-image" style="background-image: url(<%= @favorite.image %>"> 
 		</div>
-		
-		<div class="column-12 head-image" style="background-image: url(<%= !@artist.images.empty? ? @artist.images.first['url'] : "n" %>"> 
-		</div>
-
 	</div>
 
 
 	<div class="clearfix"></div>
-
-	<div class="favorites-row">
-		
-		<div class="column-12 social-form">
+	<div class="favorites-row">		
 			<% if @favorite.instagram_id == "" %>
+			<div class="column-12">
 			<h2 class="box-header">Add Instagram</h2>
-				<!-- Instagram form -->
-
-
-<!-- 					<p> Not any on these? </p>
-					<%= form_for @favorite do |f| %> 
-						<%= f.label "Add Artist Instagram Account" %> <br>
-						<%= f.text_field(:instagram_id) %> <br>
-						<%= hidden_field_tag 'name', @favorite.name %> 
-						<%= f.submit "Save changes", class: "btn btn-primary" %>
-					<% end %>  -->
-
 					
 						<%= form_for @favorite do |f| %>
-							<% @instagram_users.each do |i| %>
-								<div class="radio-button">
-								<%= label_tag(:instagram_id, i.username) %>
-								<%= f.radio_button(:instagram_id, i.username) %><br>
-								<%= hidden_field_tag 'name', @favorite.name %> 	
-								</div>
+						<table>
+							<% @insta_users.each do |i| %>
+								
+								<tr>
+									<td><%= label_tag(:instagram_id, i.username) %></td>
+									<td><%= f.radio_button(:instagram_id, i.username) %></td>
+									<%= hidden_field_tag 'name', @favorite.name %> 	
+								</tr>
+						
 							<% end %> 
-							<%= f.submit "Save changes", class: "btn btn-primary" %>
-						<% end %> 
-			
+							<tr><td><%= f.submit "ADD", class: "btn btn-primary" %></td>
+							<td> <p> Not any of these? </p> </td></tr>
+						</table>
 
+						<% end %> 
+						<%= render partial: "form", locals: {favorite: @favorite, account: :instagram_id} %>
+			
 				<% else %>
 						<!-- Show instagram images -->
-				<% @instagram_images.each do |instagram| %>
-					   <%= image_tag instagram.images.first.last.url , :class => 'insta-img' %>
+				<div class="column-12 insta-box">
+				<% cache(@instagram_images) do %> 
+					<% @instagram_images.each do |instagram| %>
+						   <%= image_tag instagram.images.first.last.url , :class => 'insta-img' %>
+						<% end %>
 					<% end %>
-				<% end %>
+				<% end %> 
 
 		</div>
-		<div class="column-12 social-form">
+		<div class="column-12 twitter-box">
 			<% if @favorite.twitter_user == "" %>
 				<!--  show form for twitter -->
 					<h2 class="box-header">Add twitter</h2>
 				
-<!-- 					<%= form_for @favorite do |f| %> 
-						<%= f.label "Add Twitter Account" %> <br>
-						<%= f.text_field(:twitter_user) %> <br>
-						<%= hidden_field_tag 'name', @favorite.name %> 
-						<%= f.submit "Save changes", class: "btn btn-primary" %>
-						<% end %>  -->
+
 
 					<%= form_for @favorite do |f| %>
+						<table>
 							<% @tweets_search.each do |t| %>
-								<div class="radio-button">
-								<%= label_tag(:twitter_user, t.username) %>
-								<%= f.radio_button(:twitter_user, t.username) %><br>
-								<%= hidden_field_tag 'name', @favorite.name %> 	
-								</div>
+									<tr>
+									<td><%= label_tag(:twitter_user, t.screen_name) %></td>
+									<td><%= f.radio_button(:twitter_user, t.screen_name) %></td>
+									<%= hidden_field_tag 'name', @favorite.name %> 	
+									</tr>
 							<% end %> 
-							<%= f.submit "Save changes", class: "btn btn-primary" %>
+							<tr class="tfoot">
+								<td><%= f.submit "ADD", class: "btn btn-primary" %></td>
+								<td> <p> Not any of these? </p> </td>
+							</tr>
+						</table>
+
 						<% end %> 
+						<%= render partial: "form", locals: {favorite: @favorite, account: :twitter_user} %>
+
 			
 			<% else %>
 				<!-- show tweets -->
-				<h2 class="box-header"><i class="icon ion-close-circled"></i><i class="icon ion-edit"></i>  Latest tweets </h2>
+				<h2 class="box-header">Latest tweets</h2>
+
 				<% @tweets_result.each do |tweet| %>
-					<div class="tweet"> <%= tweet.text %>  </div>
+
+						
+							<div class="tweet">
+								<a href="<%= tweet.user.url %>"><h3> <%= tweet.user.name %> </h3></a>
+								 <a href="<%= tweet.url %>"><p> <%= tweet.text %> </p></a>
+								 <pre>created: <%= tweet.created_at %></pre>
+							</div>
+						 
 				<% end %>
 			<% end %>
 		</div>
 	</div>
 		<div class="clearfix"></div>
+		<div class="favorites-row">
 
-	
-
-			<div class="column-12 events">
-					<div class="tweet"><h2 class="box-header"> <i class="icon ion-close-circled"></i><i class="icon ion-edit"></i> Upcoming tour dates </h2></div>
-				
-						<% @events.each do |event| %>
-							<div class="tweet">
-								 <%= event['title'] + " " + event['formatted_datetime'] %>
-							</div>
-						<% end %>
-				
+			<div class="column-12 tour-box">
+						<h2 class="box-header">Upcoming tour dates </h2>
+						<% if @events.empty? %>
+							<p> Not on tour </p>
+						<% else %> 
+							<% @events.each do |event| %>
+								<div class="tweet">
+									 <p><%= event['title'] + " " + event['formatted_datetime'] %></p>
+								</div>
+							<% end %>	
+						<% end %>	
 			</div>
 
-			<div class="column-12 events">
-				
+			<div class="column-12">
+					
+					<h2 class="box-header"> News </h2>	
+
+					<% @news_search.each do |news| %>
+						<div class="tweet">
+							 <h3><%= news.title %> </h3>
+							 <pre> <%= news.date %> </pre>
+							 <a href="<%= news.url %>"><p> <%= news.description %></p></a> 
+						</div>				
+					<% end %>					
+
 
 			</div>
+
 		</div>
 	</div>
 
-	<div class="media"> 				
-	<iframe src="https://embed.spotify.com/?uri=spotify:artist:<%= @artist.id %>" style="width: 100%;" frameborder="0" allowtransparency="true"></iframe> 
-	</div>
 </div>
 
-
+<% console %> 
 
 	
 

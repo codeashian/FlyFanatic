@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151012091442) do
+ActiveRecord::Schema.define(version: 20151029111059) do
 
   create_table "favorites", force: :cascade do |t|
     t.datetime "created_at",                null: false
@@ -21,9 +21,17 @@ ActiveRecord::Schema.define(version: 20151012091442) do
     t.string   "spotify_id"
     t.string   "instagram_id", default: ""
     t.string   "twitter_user", default: ""
+    t.string   "image",        default: ""
   end
 
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id"
+
+  create_table "playlists", force: :cascade do |t|
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "spotify_url"
+    t.integer  "favorite_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

@@ -12,4 +12,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :last_name
   end
 
+  include ActionController::Caching::Pages
+  self.page_cache_directory = "#{Rails.root.to_s}/public/page_cache"
+
 end

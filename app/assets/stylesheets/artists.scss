@@ -2,20 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+$pink: #F17A7A; 
+
 p {
 	color: white;
+	line-height: 140%;
 }
 
 a {
 	color: white;
 }
 
+h3 {
+	color: $pink;
+}
+
+pre {
+	color: $pink;
+}
 .artist-header {
 	overflow: auto;
-	min-height: 400px;
-	.title {
+	min-height: 500px;
+	.title-box {
 		display: table;
-		height: 400px;
+		height: 500px;
 		text-align: center;
 		background-color: #191919;
 		h1 {
@@ -26,9 +37,11 @@ a {
 		}
 	} 
 	.head-image {
-		min-height: 400px;
+		min-height: 500px;
 		background-size: 100% ;
 		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
 	}
 }
 
@@ -69,9 +82,52 @@ a {
 
  /* ONE FAVORITE PAGE */
 
-.social-form {
+.favorites-row {
+
+	.column-12 {
+		display: table-cell;
+		float: none;
+	}
+
+	background-color: #191919;
+
+	width: 100%;
+	display: table;
+	text-align: center;
 	background-color: black;
-	min-height: 400px;
+
+	.column-12 {
+		padding: 40px;
+		vertical-align: middle;
+	}
+
+	.twitter-box {
+		background-color: #191919;
+		display: table-cell;
+		vertical-align: middle;
+	}
+
+	.tour-box {
+		background-color: #191919;
+	}
+	.insta-box {
+		padding: 0px;
+		background-color: black;
+		display: table-cell;
+	}
+
+	table {
+	width: 60%;
+	margin: 0 auto;
+	text-align: left;
+	td:nth-child(even) {
+		text-align: right;
+	}
+	tr.tfoot {
+		margin-top: 20px;
+		cursor: pointer;
+	}
+	}
 
 	.insta-img {
 	width: 33.33333%;	
@@ -88,24 +144,26 @@ a {
 			margin-top: 20px;
 		}
 		label {
-			color: white;
-			margin-bottom: 20px;
+		color: white;
+		margin-bottom: 20px;
+		font-size: 20px;
+	    text-transform: uppercase;
+	    letter-spacing: 3px;
 		}
 	}
 }
 
-.favorites-row {
-	width: 100%;
-	display: table;
-	text-align: center;
-	background-color: black;
+h2.box-header {
+	color: white;
+	font-size: 40px;
+	margin: 0px;
+	padding-bottom: 30px;
 }
 
 .tweet {
 	width: 100%;
 	color: white;
-	padding: 50px;
-	border-bottom: 1px solid gray;
+	padding: 10px;
 	text-align: left;
 	i {
 		color: white;
@@ -117,35 +175,17 @@ a {
 	}
 }
 
-.radio-button {
-	padding: 20px;
-	width: 100%;
-	border-bottom: 1px solid white;
-}
 
-.events {
-	min-height: 400px;
-	background-color: black;
-}
 
-.media {
-	position: fixed;
+
+/*.media {
 	width: 100%;
-	bottom: 0px;
-	margin-left: 70px;
 	height: 75px;
 }
 
 .player {
 	background-color: white !important;
 
-}
+}*/
 
-h2.box-header {
-	color: white;
-	font-size: 40px;
-	margin: 0px;
-	text-align: right;
-	padding-top: 50px;
-	padding-bottom: 50px;
-}
+

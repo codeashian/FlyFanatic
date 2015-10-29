@@ -1,0 +1,12 @@
+<%= form_for @favorite do |f|%> 
+<%= hidden_field_tag 'name', @favorite.name %> 
+<%= f.text_field(:instagram_id)  %>
+<%= f.text_field(:twitter_user)  %>
+<%= f.submit "edit" %>
+<% end %>
+
+Add Playlists to Favorite: 
+
+<%= @search %>
+
+<% console %>
