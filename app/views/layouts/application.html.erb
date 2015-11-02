@@ -7,16 +7,11 @@
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> 
 </head>
-<body>
+<body class="body-<%= params[:controller] %>-page">
 
 <%= render 'shared/navbar' %> 
 
-<% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
-<% end %>
+
 
 <div id="content"> 
 

@@ -4,6 +4,29 @@
 
 
 $pink: #F17A7A; 
+$pink: #F17A7A; 
+
+
+html {
+	height: 100%;
+	width: 100%;
+}
+
+* {
+	color: black;
+	box-sizing: border-box;
+
+}
+
+body {
+	background-color: black;
+	margin: 0;
+	font-family: 'Abel';
+}
+
+.clearfix {
+	clear: both;
+}
 
 p {
 	color: white;
@@ -12,21 +35,164 @@ p {
 
 a {
 	color: white;
+	text-decoration: none;
+	font-weight: bold;
+	color: $pink;
+	&:hover {
+		color: white;
+	};
+
 }
 
-h3 {
+h1 {
+	color: white;
+	font-size: 50px;
+	text-align: center;
+	font-family: futura;
+}
+
+
+h2 {
+	color: white;
+	text-align: center;
+	font-family: futura;
+	letter-spacing: 4px;
+
+}
+
+h3 { 
+	font-family: Abel;
+	color: white;
+	}
+
+h4 {
+	font-family: Abel;
 	color: $pink;
 }
 
 pre {
 	color: $pink;
 }
+
+
+
+#content {
+	position: absolute;
+	padding-left: 70px;
+	background-color: #191919;
+	min-height: 100%;
+	width: 100%;
+}
+
+.column-12 {
+	width: 50%;	
+	float: left;
+
+}
+
+.column-1 {
+	width: 100%;
+}
+
+
+
+
 .artist-header {
 	overflow: auto;
-	min-height: 500px;
+	.column-12 {
+		background-color: black;
+		display: table;
+		text-align: center;
+		h1.artist-title {
+			font-size: 100px;
+			display: table-cell;
+			vertical-align: middle;
+		}
+	} 
+	.head-image {
+		min-height: 300px;
+	}
+}
+
+
+body.body-artist-page #content {
+
+	height: 100%;
+	width: 100%;
+.artist-page {
+	height: 100%;
+	width: 100%;
+
+		.artist-head {
+			height: 500px;
+			width: 100%;
+		}
+		.column-12 {
+			height: 100%;
+			width: 50%;
+			background-size: cover;
+			background-position: 100% center;
+
+		}
+		.column-1 {
+			display: table;
+			text-align: center;
+
+
+			h2 {
+				background-color: $pink;
+				display: table-cell;
+				vertical-align: middle;
+				font-size: 90px;
+				&:hover {
+				background-color: black;
+			};
+			}
+		}
+	}
+}
+
+
+
+.favorite-menu {
+	width: 100%;
+	background-color: black;
+	top: 0;
+	text-align: right;
+	    height: 80px;
+    overflow: hidden;
+	ul {
+		float: right;
+		margin: 0px 0px 0px 0px;
+		padding: 0px;
+
+		li {
+			color: white;
+			display: inline-block;
+			list-style: none;
+			padding: 15px;
+			&:hover {
+				background-color: white;
+			}
+			a{
+				color: white;
+				padding: 20px;
+			}
+			i {
+				color: white;
+				font-size: 30px;
+			}
+		}
+	}
+}
+
+.artist-header {
+	overflow: auto;
+	.column-12 .inside-box {
+		padding: 0px;
+	}
 	.title-box {
 		display: table;
-		height: 500px;
 		text-align: center;
 		background-color: #191919;
 		h1 {
@@ -35,26 +201,24 @@ pre {
 			vertical-align: middle;
 			color: white;
 		}
+		.edit {
+			width: 70%;
+			border-top: 1px solid white;
+			margin: 0 auto;
+		    padding: 20px;
+		}
 	} 
 	.head-image {
 		min-height: 500px;
 		background-size: 100% ;
-		background-position: center;
+		background-position: center 40;
 		background-size: cover;
 		background-repeat: no-repeat;
+
 	}
 }
 
 
-.artist-page .column-1 {
-	display: table;
-	text-align: center;
-	h2 {
-		display: table-cell;
-		vertical-align: middle;
-		font-size: 130px;
-	}
-}
 
 /* ALL FAVORITES PAGE */
 
@@ -82,23 +246,17 @@ pre {
 
  /* ONE FAVORITE PAGE */
 
-.favorites-row {
-
 	.column-12 {
-		display: table-cell;
-		float: none;
-	}
-
-	background-color: #191919;
-
-	width: 100%;
-	display: table;
-	text-align: center;
-	background-color: black;
-
-	.column-12 {
-		padding: 40px;
-		vertical-align: middle;
+		display: table;
+		float: left;
+		padding: 40px 0px 0px 0px;
+		height: 680px;
+		text-align: center;
+		.inside-box {
+			display: table-cell;
+			vertical-align: middle;
+			padding: 0px 40px 80px 40px;
+		}	
 	}
 
 	.twitter-box {
@@ -116,48 +274,42 @@ pre {
 		display: table-cell;
 	}
 
-	table {
-	width: 60%;
-	margin: 0 auto;
-	text-align: left;
-	td:nth-child(even) {
-		text-align: right;
+	.news {
+		padding: 0px;
+		background-color: black;
+		.tweet {
+			padding-left: 40px;
+		}
+		h2.box-header {
+			padding-top: 40px;
+		}
 	}
-	tr.tfoot {
-		margin-top: 20px;
-		cursor: pointer;
-	}
-	}
+
+	
 
 	.insta-img {
 	width: 33.33333%;	
 	margin-left: -3px;
 	margin-bottom: -3px;	
 	border: 6px solid black;
-	
-	}
-	
-	form {
-		input[type="text"] {
-			height: 70px;
-			width: 50%;
-			margin-top: 20px;
-		}
-		label {
-		color: white;
-		margin-bottom: 20px;
-		font-size: 20px;
-	    text-transform: uppercase;
-	    letter-spacing: 3px;
+	-webkit-transition: 0.3s ease;
+	-moz-transition: 0.3s ease;
+	transition: 0.3s ease;
+	cursor: pointer;
+	&:hover {
+		transform: scale(1.1);
 		}
 	}
-}
+	
+
+
 
 h2.box-header {
 	color: white;
 	font-size: 40px;
 	margin: 0px;
 	padding-bottom: 30px;
+	text-align: center;
 }
 
 .tweet {
@@ -175,9 +327,71 @@ h2.box-header {
 	}
 }
 
+.custom-search {
+	h3 {
+		cursor: pointer;
+	}
+	.custom-search-pop {
+	display: none;
+
+		input[type="text"] {
+			height: 40px;
+		}
+	}
+}
 
 
+/* EDIT FAVORITE */
 
+.container {
+	width: 80%;
+	margin: 0 auto;
+	margin-bottom: 100px;
+}
+
+table {
+	width: 60%;
+	margin: 0 auto;
+	text-align: left;
+	td:nth-child(even) {
+		text-align: right;
+	}
+	tr.tfoot {
+		margin-top: 20px;
+		cursor: pointer;
+	}
+	}
+
+	form {
+		text-align: center;
+		input[type="text"] {
+			height: 70px;
+			width: 50%;
+			margin-top: 20px;
+		}
+
+		input[type="checkbox"] {	
+			text-align: center;
+		}
+		label {
+			color: white;
+			margin-bottom: 20px;
+			font-size: 20px;
+		    text-transform: uppercase;
+		    letter-spacing: 3px;
+		}
+
+		input[type="submit"] {
+			width: 200px;
+		    border: 0px;
+		    padding: 10px;
+		    background-color: $pink;
+		    &:hover {
+				background-color: white;
+			}
+
+		}
+	}
 /*.media {
 	width: 100%;
 	height: 75px;
@@ -187,5 +401,194 @@ h2.box-header {
 	background-color: white !important;
 
 }*/
+
+
+/* FRONT PAGE */ 
+
+
+form#search input[type="text"] {
+	width: 100%;
+    height: 200px;
+    border: 0px;
+    font-size: 100px;
+    background-color: #151515;
+    padding: 20px;
+    color: white;
+    text-align: center;	
+    margin-top: 0px;
+}
+
+form#search input[type="submit"] {
+	width: 100%;
+	height: 50px;
+	border: 0px;
+	background-color: $pink;
+	top: -20px;
+	font-size: 20px;
+	color: white;
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	cursor: pointer;
+	&:hover {
+		background-color: black;
+	};
+
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.first-page .column-12 {
+	height: 400px;
+	overflow: hidden;
+	img {
+		width: 100%;
+		height: auto;
+	}
+}
+
+
+
+.first-page .secondary-artist {
+	height: 200px;
+	overflow: auto;
+	background-color: #191919;
+	border-bottom: 1px solid white;
+	padding: 20px;
+	display: table;
+	text-align: center;
+	h2 {
+		font-size: 30px;
+		color: white;
+		display: table-cell;
+		vertical-align: middle;
+	}
+	&:hover {
+		background-color: black;
+	};
+}
+
+.first-page .right {
+	background-color: black;
+	color: white;
+	display: table;
+	text-align: center;
+	h2 {
+		display: table-cell;
+		vertical-align: middle;
+		color: white;
+		font-size: 80px;
+	}
+
+}
+
+.start-info {
+	width: 70%;
+	margin: 0 auto;
+	text-align: center;
+
+	h2 {
+		font-family: futura;
+		color: white;
+		font-size: 130px;
+		margin: 0px;
+		letter-spacing: 6px;
+		padding-top: 140px;
+		transition: 0.4s ease-in-out;
+		-webkit-transition: 0.4s ease-in-out;
+		-moz-transition: 0.4s ease-in-out;
+		
+
+
+
+	}
+	h3 {
+		font-family: Abel	;
+		color: white;
+		font-size: 30px;
+		margin: 0px;
+		padding: 70px;
+		font-weight: 100;
+		text-transform: uppercase;
+		line-height: 150%;
+		backdrop-filter: blur(5px);
+
+	}
+}
+
+#section1 {
+	height: 500px;
+	width: 100%;
+	background-image: url('crowd.gif');
+	background-size: cover;
+	transition: 0.4s ease-in-out;
+	-webkit-transition: 0.4s ease-in-out;
+	-moz-transition: 0.4s ease-in-out;
+
+}
+
+#section2 {
+	height: 340px;
+	background-color: black;
+	span {
+		background-color: $pink;
+		font-size: 40px;
+		padding: 10px;
+		margin-top: 30px;
+		cursor: pointer;
+	}
+
+}
+
+#section3 {
+	overflow: auto;
+	background-color: black;
+	.column-12 {
+		padding-top: 0px;
+		height: 500px;
+		overflow: hidden;
+		img {
+			width: 100%;
+			height: 100%;
+		}
+	}
+	.right {
+		display: table;
+		background-color: #151515;
+		text-align: center;
+		h1 {
+			display: table-cell;
+			vertical-align: middle;
+			font-size: 50px;
+		}
+	}
+	.similar-list {
+		overflow: auto;
+		margin-top: 30px;
+		h2 {
+			color: white;
+			text-align: center;
+			padding: 30px;
+		}
+		h3 {
+			text-align: center;
+			margin: 0px;
+    		padding: 20px;
+			&:hover {
+				background-color: white;
+				color: black;
+			}
+		}
+	}
+	
+}
+
+.search-form {
+	display: none;
+}
 
 

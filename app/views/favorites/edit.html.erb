@@ -1,12 +1,56 @@
-<%= form_for @favorite do |f|%> 
-<%= hidden_field_tag 'name', @favorite.name %> 
-<%= f.text_field(:instagram_id)  %>
-<%= f.text_field(:twitter_user)  %>
-<%= f.submit "edit" %>
-<% end %>
-
-Add Playlists to Favorite: 
-
 <%= @search %>
+<div class="container">
+	<h2 style="text-align:center"> customize your favorite </h2>
+	<h1 style="color: #F17A7A;"><%= @favorite.name %></h1>
 
-<% console %>
+	<%= form_for @favorite do |f| %>
+		
+		<h2 class="header-box"> Add Instagram Account </h2>
+		<table>
+		<%= hidden_field_tag 'name', @favorite.name %> 	
+
+		<% @insta_users.each do |i| %>				
+		<tr>
+			<td><%= label_tag(:instagram_id, i.username) %></td>
+			<td><%= f.radio_button(:instagram_id, i.username, class: "instagram-input") %></td>
+		</tr>
+								
+		<% end %> 
+		</table>
+
+		<div class="custom-search">
+			<h3> Not any of these? </h3>
+			<%= render partial: 'form', locals: {f: f, account: :instagram_id, label: 'instagram'} %> 
+		</div>
+
+
+
+		<h2 class="header-box"> Add Twitter account </h2>
+		<table>
+		<% @tweets_search.each do |t| %>
+			<tr>
+			<td><%= label_tag(:twitter_user, t.screen_name) %></td>
+			<td><%= f.radio_button(:twitter_user, t.screen_name, class: "twitter-input") %></td>
+			<%= hidden_field_tag 'name', @favorite.name %> 	
+			</tr>
+		<% end %> 
+		</table>
+
+		<div class="custom-search">
+			<h3> Not any of these? </h3>
+		<%= render partial: 'form', locals: {f: f, account: :twitter_user, label: 'twitter'} %> 
+		</div>
+	
+
+		
+		<h2 class="header-box"> Display latest news? 	</h2>
+		<p>Searching the web for news about "<%= @favorite.name %> <br> (Bare in mind: some artists are not very trendy)</p>
+	
+		<%= f.check_box :news, {}, true %>
+		<br>
+		<br>
+		<tr><td><%= f.submit "EDIT", class: "btn btn-primary" %></td>
+
+	<% end %> 
+	</div>
+</div>

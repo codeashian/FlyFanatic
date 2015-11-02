@@ -11,26 +11,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151029111059) do
+ActiveRecord::Schema.define(version: 20151031131823) do
 
   create_table "favorites", force: :cascade do |t|
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.integer  "user_id"
     t.string   "name"
     t.string   "spotify_id"
     t.string   "instagram_id", default: ""
     t.string   "twitter_user", default: ""
     t.string   "image",        default: ""
+    t.boolean  "news",         default: false
   end
 
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id"
+
+  create_table "forums", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "playlists", force: :cascade do |t|
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "spotify_url"
     t.integer  "favorite_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "last_poster_id"
+    t.datetime "last_post_at"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -8,19 +8,27 @@
 			<% end %>
 			</div>
 			<div class="column-12 right">
-				<h2> <%= @artist.first.name %> </h2>
+				<h1> <%= @artist.first.name %> </h1>
 			</div>
-	<% end %>
+		<% end %>
 	
+	<div class="clearfix"></div>
+
+	<div class="similar-list">
+	<h2> ..or did you mean? </h2>
 	<% @artist.each_with_index do |a, index| %> 
       <% if index != 0 %>
         <%= link_to artist_path(a.name) do %> 
 			
-			<div class="column-12 secondary-artist"> <h2> <%= a.name %> </h2> </div>
+			<h3> <%= a.name %> </h3>
 
 			<% end %> 
 		<% end %> 
+
       <% end %> 
+      </div>
+
+
  
 
 <% end %>

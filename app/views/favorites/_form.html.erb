@@ -1,9 +1,6 @@
-
-<div class="custom-search"> 
-	<%= form_for favorite do |f| %> 
-	 	<%= f.label "Add Twitter Account" %> <br>
-		<%= f.text_field(account) %> <br>
-		<%= hidden_field_tag 'name', favorite.name %> 
-		<%= f.submit "Save changes", class: "btn btn-primary" %>
-	<% end %> 
+<div class="custom-search-pop"> 
+	 	<p> Type in the account you want to use </p>
+		<%= f.text_field(account, class: "custom-search-" + label ) %> <br>
+		<%= hidden_field_tag 'custom', true %> 
 </div>
+

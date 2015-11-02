@@ -26,3 +26,12 @@ $("#favor").click(function() {
   })
 })
 
+$(".twitter-box").click(function() {
+	console.log(this);
+	var form = $(this).next('.custom-search-pop-up');
+	form.toggle();
+	$(".big-overlay").toggle();
+});
+
+
+

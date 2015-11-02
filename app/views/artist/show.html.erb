@@ -1,27 +1,36 @@
 
 <div class="wrapper artist-page">
-	<div class="column-12"> 
-		<h1 class="artist-title"> <%= @artist.name %> </h1>
-	</div>
-	<div class="column-12 artist-head" style="background-image: url(<%= !@artist.images.empty? ? @artist.images.first['url'] : "" %>"> 
-	</div>
-
-	<div class="clearfix"></div>
 
 
+<div class="column-12">
+	
+	<div class="inside-box">
+		<div class="column-1">
+		            <h1> <%= @artist.name %>  </h1>
+		</div> 
 		<% if user_signed_in? and !current_user.favorites.include?(@artist.name) %>
-		
-		<%= link_to favorites_path(:id => @artist.name), :action => 'create', :method => 'post' do %> 
-					                 <div class="column-1">
-	                               		<h2> I AM A FAN </h2>
-	                               </div> 
-		<% end %>  
+			
+			<%= link_to favorites_path(:id => @artist.name), :action => 'create', :method => 'post' do %> 
+				<div class="column-1">
+		            <h2> I AM A FAN </h2>
+		        </div> 
+			<% end %>  
+		<% else  %>
+				<div class="column-1">
+		            <h3> <a href="/login"> login </a> or <a href="/sign_up"> register </a> to create your custom fanpage 
+		            <br> for <%= @artist.name %>  </h3>
+		        </div> 
+		 <% end %> 
+    </div>
 
-	 	<% end %>
+</div>
+
+<div class="column-12" style="background-image: url(<%= !@artist.images.empty? ? @artist.images[0]['url'] : "" %>">
+</div>
+
 		
 </div>
 
-	
 
 
 

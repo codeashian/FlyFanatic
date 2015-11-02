@@ -7,6 +7,8 @@ require 'bing-search'
 class FavoritesController < ApplicationController
 
   caches_page :index, :show
+  
+ 
 
 
 	def index 
@@ -24,43 +26,26 @@ class FavoritesController < ApplicationController
 
     # if instagram_id exists
     if @favorite.instagram_id != ""
-      @instagram_id     = Instagram.user_search(@favorite.instagram_id).first.id
-      @instagram_images = Instagram.user_recent_media(@instagram_id).take(9)
+       @instagram_id     = Instagram.user_search(@favorite.instagram_id).first.id
+     @instagram_images = Instagram.user_recent_media(@instagram_id).take(9)
     end
 
     @insta_users = []
     @instagram_users = Instagram.user_search(params[:id]).take(5)
 
     # check if not private
-    @instagram_users.each do |i| 
-      begin Instagram.user_recent_media(i.id)
-        @insta_users.push(i)
-      rescue
-        puts "hej"
-      end 
-
+    if @favorite.news == true 
+       BingSearch.account_key = '+UAV1IbOg4zDavRN+30Gey9a5EeipB91+BW3rR/3PeM'
+       @news_search = BingSearch.news(params[:id]).take(4)
     end
-
-    BingSearch.account_key = '+UAV1IbOg4zDavRN+30Gey9a5EeipB91+BW3rR/3PeM'
-    @news_search = BingSearch.news(params[:id]).take(4)
-
 
 
     twitter = twitter_api
-    # if twitter_user exists 
-    @tweets_search = twitter.user_search(params[:id].tr('åäö','aao')).take(4)
-
     if @favorite.twitter_user != ""
 
-      tweets = twitter.user_timeline(@favorite.twitter_user).take(3)
-      @tweets_result = []
-      
-      tweets.each do |t| 
-          t.text.split.map { |x| x =~ URI::regexp ? make_link(x) : x }.join(" ")
-          @tweets_result.push(t)
-      end
-    end 
+      @tweets_result = twitter.user_timeline(@favorite.twitter_user).take(3)
 
+    end
 
     # get events from bandsintown
     @events = get_events(params[:id]).take(4)
@@ -74,6 +59,7 @@ class FavoritesController < ApplicationController
   end
 
   def create 
+    
      begin RSpotify::Artist.search(params[:id]) 
 
         artist = RSpotify::Artist.search(params[:id]).first
@@ -91,7 +77,7 @@ class FavoritesController < ApplicationController
           flash[:notice] = "Could not add"
         end
 
-        redirect_to(:action => 'show', :controller => 'artist', :id => params[:id])
+        redirect_to(:action => 'edit', :controller => 'favorites', :id => params[:id])
 
         rescue 
         flash[:notice] = "nope it didnt work to save "
@@ -114,6 +100,22 @@ class FavoritesController < ApplicationController
 
     @favorite = current_user.favorites.where(:name => params[:id]).first
 
+    @insta_users = []
+
+    @instagram_users = Instagram.user_search(params[:id]).take(5)
+
+    @instagram_users.each do |i| 
+      begin Instagram.user_recent_media(i.id)
+        @insta_users.push(i)
+      rescue
+        puts "hej"
+      end 
+    end
+
+    twitter = twitter_api
+
+    @tweets_search = twitter.user_search(params[:id].tr('åäö','aao')).take(4)
+
    end
 
    def destroy 
@@ -127,7 +129,7 @@ class FavoritesController < ApplicationController
 
    	# attributes which can be modified
    	def favorites_params
-      params.require(:favorite).permit(:instagram_id, :twitter_user)
+      params.require(:favorite).permit(:instagram_id, :twitter_user, :news)
    	end
 
     def twitter_api 

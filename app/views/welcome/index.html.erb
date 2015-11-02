@@ -1,21 +1,30 @@
-<div class="wrapper first-page">
-	
-<%= form_tag '/search', remote: 'true', method: 'get', id: "search" do %>
-	<%= text_field_tag(:artist) %>
-	<%= submit_tag('Search', class: "btn btn-success") %>
-<% end %>
+<div id='section1'> 
 
+	<div class="start-info">
+		<h2> FLY FANATIC </h2>			<!--  -->
+	</div> 
+</div>
 
-	<div id='container'> 
+<div class="search-form">
+	<%= form_tag '/search', remote: 'true', method: 'get', id: "search" do %>
+		<%= text_field_tag :artist, nil %>
+		<%= submit_tag('Search', class: "btn btn-success") %>
+	<% end %>
+</div>
 
-		<div class="start-info">
-			<h2> FLY FANATIC </h2>
-			<h3> the fanpage is back. You will get the ability to follow 
-				 and customize your own tiny fan page for your favorite. Go ahead and search!</h3>
-		</div>
+<div id="section3"> 
 
+</div>
+
+<div id="section2">
+	<div class="start-info">
+		<h3> the fanpage is back. You will get the ability to follow 
+			 and customize your own tiny fan page for your favorite artist
+			 <p> <span> search now! </span></p>
+		</h3>
 	</div>
 </div>
+
 
 
 

@@ -2,6 +2,7 @@
 	<div class="favorite-artist-box">
 	<h2> <%= link_to f.name, favorite_path(:id => f.name) %> </h2><br>
 	<%= link_to 'Delete', {:action => 'destroy', :id => f.id}, :method => 'delete' %> 
+	<%= link_to 'Edit', {:action => 'edit', :id => f.name}, :method => 'get' %> 
 	</div>
 <% end %>
 

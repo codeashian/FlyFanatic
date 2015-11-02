@@ -11,6 +11,7 @@ class WelcomeController < ApplicationController
 				@artist = RSpotify::Artist.search(artist).take(5)
 			end
 		end
+
 		
 	end
 
