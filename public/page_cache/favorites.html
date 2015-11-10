@@ -2,16 +2,23 @@
 <html>
 <head>
   <title>FlyFanatic</title>
-  <link rel="stylesheet" media="all" href="/assets/application-36ebc0bd4714d9a64a3057c656e9871349a24b1e4ab32d5da47aea07ff7c2748.css" data-turbolinks-track="true" />
-  <script src="/assets/application-6f728c01a8e34e091c3e4fb7ae3bda68bd098ae7debe3ded6498d2c707374ded.js" data-turbolinks-track="true"></script>
+  <link rel="stylesheet" media="all" href="/assets/application-c0810739084263e46b0a5aa8adbd66401d60c0ef9aa0cab5173b7ddc4cde5c5d.css" data-turbolinks-track="true" />
   <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="HJAA+76sYdQK0wsu4Q2d1crV9mc3a50lV5F/y8ti/NnHxxunm4KHhOV4Fk+i39k13sLdKUZs4EhChwfxbSwXow==" />
+<meta name="csrf-token" content="Eh4iHOy1lwLDzpD+ZxCYbq/9SbzRUkcoSJHvqvO4s8QEZvV+fTyr/77auZbIaXTM33mvjHfjfmRnzOujbARuyw==" />
   <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> 
+<script src="/assets/insta-e6f5f73a661256551ed59fd9017f37d196cdac46e1918493103803bf99fca7b7.js"></script> 
+
+	
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
+
 <body class="body-favorites-page">
 
+
+
 <div id="nav">
-        <div class="nav-box"> <a href="/">  <i class="icon ion-home"></i> </a> </div>
+    <div class="nav-box"> <a href="/">  <i class="icon ion-home"></i> </a> <div class="hidden-nav-box"> <p> HOME </p> </div> </div>
 
 
 
@@ -22,28 +29,62 @@
         <div class="nav-box"> <a href="/favorites">  <i class="icon ion-android-favorite"></i> </a> 
         <div class="hidden-nav-box"> <p> FAVORITES </p> </div></div>
 
-        <div class="nav-box"> <a rel="nofollow" data-method="delete" href="/logout">  <i class="icon ion-ios-body"></i> </a> <div class="hidden-nav-box"> LOG OUT </div></div> 
+        <div class="nav-box"> <a rel="nofollow" data-method="delete" href="/logout">  <i class="icon ion-log-out"></i> </a> <div class="hidden-nav-box"> <p>LOG OUT </p></div></div> 
    
+</div>
+
+<div id="resp-nav">
+     <i class="icon ion-android-more-vertical"></i>
+     <div class="resp-nav-box">
+        <div class="nav-box"> <a href="/">  <i class="icon ion-home"></i> </a> </div>
+
+
+
+                
+        <div class="nav-box"> <a href="/profile">  <i class="icon ion-ios-body"></i> </a> 
+        </div> 
+
+        <div class="nav-box"> <a href="/favorites">  <i class="icon ion-android-favorite"></i> </a> 
+        </div>
+
+        <div class="nav-box"> <a rel="nofollow" data-method="delete" href="/logout">  <i class="icon ion-log-out"></i> </a> </div> 
+   
+        
+    </div>
 </div> 
 
 
 
 <div id="content"> 
 
+
+<div class="wrapper">
+</div>
+
 	<div class="favorite-artist-box">
-	<h2> <a href="/favorites/Familjen">Familjen</a> </h2><br>
-	<a rel="nofollow" data-method="delete" href="/favorites/89">Delete</a> 
-	<a href="/favorites/Familjen/edit">Edit</a> 
+	<h2> <a href="/favorites/Lisa%20Nilsson">Lisa Nilsson</a> </h2><br>
+	<a rel="nofollow" data-method="delete" href="/favorites/9">Delete</a> 
+	<a data-method="get" href="/favorites/Lisa%20Nilsson/edit">Edit</a> 
 	</div>
 	<div class="favorite-artist-box">
-	<h2> <a href="/favorites/Kanye%20West">Kanye West</a> </h2><br>
-	<a rel="nofollow" data-method="delete" href="/favorites/91">Delete</a> 
-	<a href="/favorites/Kanye%20West/edit">Edit</a> 
+	<h2> <a href="/favorites/Taylor%20Swift">Taylor Swift</a> </h2><br>
+	<a rel="nofollow" data-method="delete" href="/favorites/10">Delete</a> 
+	<a data-method="get" href="/favorites/Taylor%20Swift/edit">Edit</a> 
 	</div>
 	<div class="favorite-artist-box">
-	<h2> <a href="/favorites/Madonna">Madonna</a> </h2><br>
-	<a rel="nofollow" data-method="delete" href="/favorites/92">Delete</a> 
-	<a href="/favorites/Madonna/edit">Edit</a> 
+	<h2> <a href="/favorites/KISS">KISS</a> </h2><br>
+	<a rel="nofollow" data-method="delete" href="/favorites/11">Delete</a> 
+	<a data-method="get" href="/favorites/KISS/edit">Edit</a> 
+	</div>
+	<div class="favorite-artist-box">
+	<h2> <a href="/favorites/Timo%20R%C3%A4is%C3%A4nen">Timo Räisänen</a> </h2><br>
+	<a rel="nofollow" data-method="delete" href="/favorites/12">Delete</a> 
+	<a data-method="get" href="/favorites/Timo%20R%C3%A4is%C3%A4nen/edit">Edit</a> 
+	</div>
+	<div class="favorite-artist-box">
+	<h2> <a href="/favorites/H%C3%A5kan%20Hellstr%C3%B6m">Håkan Hellström</a> </h2><br>
+	<a rel="nofollow" data-method="delete" href="/favorites/13">Delete</a> 
+	<a data-method="get" href="/favorites/H%C3%A5kan%20Hellstr%C3%B6m/edit">Edit</a> 
 	</div>
 
 <!-- Search in favorites  -->
@@ -52,6 +93,11 @@
 
 </div>
 
-
 </body>
+  <script src="/assets/application-647503bdb81f609f7f681b337c50db0fa374c03d063899efdc79eb2eee3fd599.js" data-turbolinks-track="true"></script>
+
+	
+
 </html>
+
+

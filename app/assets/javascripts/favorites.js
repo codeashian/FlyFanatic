@@ -2,12 +2,6 @@
 $(document).ready(function(){
 
 
-	$("p.search-link").click(function() {
-		var form = $(this).next('.big-overlay');
-		form.toggle();
-
-	})
-
 	//  show search-form on front page
 
 	$('#section2 span').click(function() {
@@ -36,7 +30,28 @@ $(document).ready(function(){
 		$(div).slideToggle();
 	})
 
+
   //   ********************************
 
+  	$('#favorite_distance').change(function() {
+  		$('#range-value').html('<p>' + $(this).val() + 'km </p>');
+  	})
+
+  	$('#resp-nav i').click(function() {
+
+  	if (!$('#resp-nav').hasClass('open')) {
+  		$('#resp-nav').css('backgroundColor', 'black');
+  		$('.resp-nav-box').css('display','inline-block');
+  		$('.nav-box').addClass('animated fadeInLeft');
+  		$('#resp-nav').addClass('open');
+  	}
+  	else {
+  		$('#resp-nav').removeClass('open');
+  		$('#resp-nav').css('backgroundColor', 'transparent');
+  		$('.resp-nav-box').css('display','none');
+  		$('.nav-box').removeClass('animated fadeInLeft');
+  		
+  	}
+  	});
 
 })

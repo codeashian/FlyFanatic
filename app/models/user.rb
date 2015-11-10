@@ -5,4 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :favorites
+
+  geocoded_by :city
+  after_validation :geocode 
 end

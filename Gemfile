@@ -64,3 +64,5 @@ gem 'unicorn'
 gem 'actionpack-page_caching'
 
 gem 'bing-search'
+
+gem 'geocoder'

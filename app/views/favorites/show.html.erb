@@ -1,91 +1,111 @@
 <div class="wrapper favorite-page">
-<div class="favorite-menu">
-<ul>
-	<!-- <a href="<%= edit_favorite_path %>"><li><i class="icon ion-compose"></i></li></a> -->
+	<div class="favorite-menu">
+	<ul>
+		<!-- <a href="<%= edit_favorite_path %>"><li><i class="icon ion-compose"></i></li></a> -->
+		<iframe src="https://embed.spotify.com/?uri=spotify:artist:<%= @favorite.spotify_id %>" width="450" height="80" frameborder="0" allowtransparency="true"></iframe>
+	</ul>
 
-	<iframe src="https://embed.spotify.com/?uri=spotify:artist:<%= @favorite.spotify_id %>" width="450" height="80" frameborder="0" allowtransparency="true"></iframe>
-
-</ul>
-
-</div>
-
-	<div class="artist-header">		
-		<div class="column-12 title-box">
-				<h1> <%= @favorite.name %> </h1>
-
-		</div>		
-				<div class="column-12 head-image" style="background-image: url(<%= @favorite.image %>">
-				</div>
 	</div>
-
-
-			<% if @favorite.instagram_id != "" %>
-						<!-- Show instagram images -->
-				<div class="column-12 insta-box">
-				<iframe src="http://widget.websta.me/in/<%= @favorite.instagram_id %>/?s=225&w=3&h=3&b=0&bg=000000&p=0" allowtransparency="true" frameborder="0" scrolling="no" style="border:none;overflow:hidden;width:100%; height: 670px" ></iframe> 
-
-
-			<% end %>
-		</div>
-		<div class="column-12 twitter-box">
-			<% if @favorite.twitter_user != "" %>
-				<!-- show tweets -->
-				<div class="inside-box">
-					<h2 class="box-header">Latest tweets</h2>
-
-					<% @tweets_result.each do |tweet| %>					
-						<div class="tweet">
-							<a href="<%= tweet.user.url %>"><h3> <%= tweet.user.name %> </h3></a>
-							 <a href="<%= tweet.url %>"><p> <%= tweet.text %> </p></a>
-							 <pre>created: <%= tweet.created_at %></pre>
-						</div>			 
-					<% end %>
-				<% end %>
+		<div class="artist-header">		
+			<div class="column-12 title-box">
+					<h1> <%= @favorite.name %> </h1>
+			</div>		
+			<div class="column-12 head-image" style="background-image: url(<%= @favorite.image %>">
 			</div>
 		</div>
-	</div>
 
-			<div class="column-12 tour-box">
-				<div class="inside-box">
-						<h2 class="box-header">Upcoming tour dates </h2>
-						<% if @events.empty? %>
-							<p> Not on tour </p>
-						<% else %> 
-							<% @events.each do |event| %>
-								<div class="tweet">
-									 <p><%= event['title'] + " " + event['formatted_datetime'] %></p>
-								</div>
-							<% end %>	
-						<% end %>	
-				</div>
+
+		<% if @favorite.instagram_id != "" %>							<!-- Show instagram images -->
+			<div class="column-12 insta-box">
+				<h2 class="box-header">Latest from instagram</h2>
+				<div id="instafeed"></div>			
 			</div>
+		<% end %>
+				
+				<% if @favorite.twitter_user != "" %>
+				<div class="column-12 twitter-box">
+					<!-- show tweets -->
+					<div class="inside-box">
+						<h2 class="box-header">Latest tweets</h2>
 
-			<div class="column-12 news">
-				<div class="inside-box">
-					<h2 class="box-header"> News </h2>	
-					<% if @news_search %>
-						<% @news_search.each do |news| %>
+						<% @tweets_result.each do |tweet| %>					
 							<div class="tweet">
-								 <h3><%= news.title %> </h3>
-								 <pre> <%= news.date %> </pre>
-								 <a href="<%= news.url %>"><p> <%= news.description %></p></a> 
-							</div>				
+								<a href="<%= tweet.user.url %>"><h3> <%= tweet.user.name %> tweeted:</h3></a>
+								 <a href="<%= tweet.url %>"><p> <%= tweet.text %> </p></a>
+								 <pre>created: <%= tweet.created_at %></pre>
+							</div>			 
 						<% end %>
-					<% else %>
-						 <p> You can add news in the edit section </p>
+					</div>
+					</div>
 					<% end %>
 
+
+				<div class="column-12 tour-box">
+					<div class="inside-box">
+							<h2 class="box-header">Upcoming tour dates </h2>
+							<% if @events.empty? %>
+								<p> Not on tour </p>
+							<% else %> 
+								<% @events.each do |event| %>
+									<div class="tweet">
+										 <a href=" <%= @events.first['ticket_url'] %>"><p><%= event['title'] + " " + event['formatted_datetime'] %></p></a>
+									</div>
+								<% end %>	
+							<% end %>	
+
+						
+							<% if !@close_events.empty? %>
+								<br>
+								<h2 class="box-header"> Events near <%= current_user.city %>  </h2>
+
+								<% @close_events.each do |c| %>
+								<div class="tweet">
+									<a href=" <%= @events.first['ticket_url'] %>"> <p><%= c[:event]['title'] + " " + c[:event]['formatted_datetime'] %></p></a>
+								</div>
+								<% end %> 
+							<% end %> 						
+					</div>
 				</div>
 
-<!-- -->
+				<div class="column-12 news">
+					<div class="inside-box">
+						<h2 class="box-header"> News </h2>	
+						<% if @news_search %>
+							<% @news_search.each do |news| %>
+								<div class="tweet">
+									 <a href="<%= news.url %>"><h3><%= news.title %> </h3></a>
+									 <pre> <%= news.date %> </pre>
+									 <a href="<%= news.url %>"><p> <%= news.description %></p></a> 
+								</div>				
+							<% end %>
+						<% else %>
+							 <p> You can add news in the <%= link_to 'Edit', {:action => 'edit', :id => @favorite.name}, :method => 'get' %> section </p>
+						<% end %>
 
+					</div>
+
+	<!-- -->
+
+
+				
 
 			</div>
-
 		</div>
-	</div>
 
 </div>
+
+  <script type="text/javascript">
+    var feed = new Instafeed({
+        get: 'user',
+        userId: "<%= @instagram_id %>",
+        accessToken: '15944678.5ad9fb1.40bd2a22214844948417214abd4c320f',
+        limit: 9,
+        template: '<img src="{{image}}" />',
+        resolution: 'standard_resolution',
+    });
+    feed.run();
+</script>
+
 	
 	
 

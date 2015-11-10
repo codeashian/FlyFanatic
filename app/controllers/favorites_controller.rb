@@ -4,6 +4,7 @@ require 'uri'
 require 'bandsintown'
 require 'bing-search'
 
+
 class FavoritesController < ApplicationController
 
   caches_page :index, :show
@@ -27,7 +28,7 @@ class FavoritesController < ApplicationController
     # if instagram_id exists
     if @favorite.instagram_id != ""
        @instagram_id     = Instagram.user_search(@favorite.instagram_id).first.id
-     @instagram_images = Instagram.user_recent_media(@instagram_id).take(9)
+       @instagram_images = Instagram.user_recent_media(@instagram_id).take(9)
     end
 
     @insta_users = []
@@ -36,7 +37,7 @@ class FavoritesController < ApplicationController
     # check if not private
     if @favorite.news == true 
        BingSearch.account_key = '+UAV1IbOg4zDavRN+30Gey9a5EeipB91+BW3rR/3PeM'
-       @news_search = BingSearch.news(params[:id]).take(4)
+       @news_search = BingSearch.news(params[:id]).take(3 )
     end
 
 
@@ -48,7 +49,11 @@ class FavoritesController < ApplicationController
     end
 
     # get events from bandsintown
-    @events = get_events(params[:id]).take(4)
+    @events = get_events(params[:id]).take(3)
+
+    close = get_events(params[:id]);
+    @close_events = get_close_events(close, 20).take(3)
+
 
     expires_in 5.minute, public: true
 
@@ -59,7 +64,7 @@ class FavoritesController < ApplicationController
   end
 
   def create 
-    
+
      begin RSpotify::Artist.search(params[:id]) 
 
         artist = RSpotify::Artist.search(params[:id]).first
@@ -129,7 +134,7 @@ class FavoritesController < ApplicationController
 
    	# attributes which can be modified
    	def favorites_params
-      params.require(:favorite).permit(:instagram_id, :twitter_user, :news)
+      params.require(:favorite).permit(:instagram_id, :twitter_user, :news, :distance)
    	end
 
     def twitter_api 
@@ -161,5 +166,28 @@ class FavoritesController < ApplicationController
         end
 
     end
+
+    def get_close_events(events, distance) 
+
+      close_events = []
+
+      events.each do |e| 
+        longitude = e['venue']['longitude']
+        latitude  = e['venue']['latitude']    
+
+        event_dist = current_user.distance_from([latitude, longitude]);
+
+        if distance > event_dist
+          close_events.push(:dist => event_dist, :event => e)
+
+          # sort by distance 
+          close_events.sort!{|a,b| a[:dist] <=> b[:dist]}
+        end
+      end
+
+    return close_events
+    
+    end 
+
 
 end

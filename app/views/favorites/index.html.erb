@@ -1,3 +1,11 @@
+
+<div class="wrapper">
+<% if @favs.empty? %> 
+	<h1 style="margin-top: 120px"> No favorites... yet! </h1>
+	<h2 style="text-align: center;"> search for artists <a href="/"> here </a> </h2>
+<% end %> 
+</div>
+
 <% @favs.each do |f| %>
 	<div class="favorite-artist-box">
 	<h2> <%= link_to f.name, favorite_path(:id => f.name) %> </h2><br>

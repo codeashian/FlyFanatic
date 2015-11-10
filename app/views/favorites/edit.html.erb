@@ -1,4 +1,7 @@
 <%= @search %>
+
+
+
 <div class="container">
 	<h2 style="text-align:center"> customize your favorite </h2>
 	<h1 style="color: #F17A7A;"><%= @favorite.name %></h1>
@@ -41,6 +44,10 @@
 		<%= render partial: 'form', locals: {f: f, account: :twitter_user, label: 'twitter'} %> 
 		</div>
 	
+		<h2 class="header-box"> Set max distance for events: </h2>
+
+		<%= f.range_field(:distance, :min => 0, :max => 300) %> 
+		<div id="range-value"> <p><%= @favorite.distance %>km </p> </div>
 
 		
 		<h2 class="header-box"> Display latest news? 	</h2>
@@ -49,7 +56,7 @@
 		<%= f.check_box :news, {}, true %>
 		<br>
 		<br>
-		<tr><td><%= f.submit "EDIT", class: "btn btn-primary" %></td>
+		<tr><td><%= f.submit "GO!", class: "btn btn-primary" %></td>
 
 	<% end %> 
 	</div>

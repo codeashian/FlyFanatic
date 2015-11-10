@@ -1,3 +1,5 @@
+$pink: #F17A7A; 
+
 #nav {
 	background: black;
 	height: 100%;
@@ -5,7 +7,7 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: 1;
+	z-index: 12323;
 
 }
 
@@ -23,7 +25,7 @@
 	}
 
 	&:hover {
-		background-color: red;
+		background-color: $pink;
 	}
 
 	i {
@@ -38,13 +40,64 @@
 	position: absolute;
 	left: -90px;
 	display: table;
+	-webkit-transition: ease 0.3s;
+	-o-transition: ease 0.3s;
+	transition: ease 0.3s;
+	z-index: -1;
 	p {
 		display: table-cell;
-	vertical-align: middle;
+		vertical-align: middle;
 
 	}
 }
 
 .nav-box:hover .hidden-nav-box {
 	left: 70px;
+}
+
+
+@media screen and (max-width: 500px) {
+
+#nav {
+		display: none;
+	}
+
+	#resp-nav {
+		position: fixed;
+		top: 0;
+		padding-left: 20px;
+		z-index: 1;
+		width: 100%;
+		float: left;
+		i {
+			color: white;
+			font-size: 50px;
+			float: left;
+		}
+		.resp-nav-box {
+			display: none;
+			background-color: black;
+			float: right;
+			.nav-box {
+				display: inline-block;
+				float: left;
+				margin-left: 10px;
+				display: table;
+				text-align: center;
+				i {
+					font-size: 20px;
+					display: table-cell;
+					vertical-align: middle;
+					text-align: center;
+				}
+				a {
+					text-align: center;
+				}
+			}
+
+
+		}
+		
+	}
+
 }

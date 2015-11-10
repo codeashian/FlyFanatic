@@ -1,5 +1,5 @@
 <div id="nav">
-        <div class="nav-box"> <%= link_to root_path do %>  <i class="icon ion-home"></i> <% end %> </div>
+    <div class="nav-box"> <%= link_to root_path do %>  <i class="icon ion-home"></i> <% end %> <div class="hidden-nav-box"> <p> HOME </p> </div> </div>
 
 
 
@@ -11,14 +11,43 @@
         <div class="nav-box"> <%= link_to favorites_path do %>  <i class="icon ion-android-favorite"></i> <% end %> 
         <div class="hidden-nav-box"> <p> FAVORITES </p> </div></div>
 
-        <div class="nav-box"> <%= link_to destroy_user_session_path, :method => :delete do %>  <i class="icon ion-ios-body"></i> <% end %> <div class="hidden-nav-box"> LOG OUT </div></div> 
+        <div class="nav-box"> <%= link_to destroy_user_session_path, :method => :delete do %>  <i class="icon ion-log-out"></i> <% end %> <div class="hidden-nav-box"> <p>LOG OUT </p></div></div> 
    
     <% else %>
 
-        <div class="nav-box"> <%= link_to new_user_registration_path do %>  <i class="icon ion-android-favorite"></i> <% end %>  </div>
-		<div class="nav-box"> <%= link_to user_session_path do %>  <i class="icon ion-android-favorite"></i> <% end %></div>
+        <div class="nav-box"> <%= link_to new_user_registration_path do %>  <i class="icon ion-person-add"></i> <% end %>  </div>
+		<div class="nav-box"> <%= link_to user_session_path do %>  <i class="icon ion-log-in"></i> <% end %></div>
         
 
         
     <% end %>
+</div>
+
+<div id="resp-nav">
+     <i class="icon ion-android-more-vertical"></i>
+     <div class="resp-nav-box">
+        <div class="nav-box"> <%= link_to root_path do %>  <i class="icon ion-home"></i> <% end %> </div>
+
+
+
+    <% if user_signed_in? %>
+                
+        <div class="nav-box"> <%= link_to profile_path do %>  <i class="icon ion-ios-body"></i> <% end %> 
+        </div> 
+
+        <div class="nav-box"> <%= link_to favorites_path do %>  <i class="icon ion-android-favorite"></i> <% end %> 
+        </div>
+
+        <div class="nav-box"> <%= link_to destroy_user_session_path, :method => :delete do %>  <i class="icon ion-log-out"></i> <% end %> </div> 
+   
+    <% else %>
+
+        <div class="nav-box"> <%= link_to new_user_registration_path do %>  <i class="icon ion-person-add"></i> <% end %>  </div>
+        <div class="nav-box"> <%= link_to user_session_path do %>  <i class="icon ion-log-in"></i> <% end %></div>
+        
+
+        
+    <% end %>
+        
+    </div>
 </div>

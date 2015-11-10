@@ -6,7 +6,7 @@ class Favorite < ActiveRecord::Base
 
 	validates_uniqueness_of :spotify_id
 	
-	attr_accessible = :spotify_id, :instagram_id, :twitter_user 
+	attr_accessible = :spotify_id, :instagram_id, :twitter_user, :distance 
 
 	def is_instagram 
 		if self.instagram_id != ""

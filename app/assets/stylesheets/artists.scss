@@ -6,6 +6,11 @@
 $pink: #F17A7A; 
 $pink: #F17A7A; 
 
+/* Paste this css to your style sheet file or under head tag */
+/* This only works with JavaScript, 
+if it's not present, don't show loader */
+
+
 
 html {
 	height: 100%;
@@ -74,12 +79,24 @@ pre {
 	color: $pink;
 }
 
+form input[type="submit"] {
 
+	font-size: 20px;
+    font-family: abel;
+    text-transform: uppercase;
+	cursor: pointer;
+}
+
+form input {
+	font-size: 20px;
+	font-family: abel;
+	text-align: center;
+}
 
 #content {
 	position: absolute;
 	padding-left: 70px;
-	background-color: #191919;
+	background-color: #0E0D0D;
 	min-height: 100%;
 	width: 100%;
 }
@@ -93,6 +110,22 @@ pre {
 .column-1 {
 	width: 100%;
 }
+
+.column-13 {
+	width: 32%;
+	margin-left: 1%;
+	background-color: black;
+	height: 100px;
+	float: left;
+	display: table;
+	text-align: center;
+	h2 {
+		display: table-cell;
+		vertical-align: middle;
+	}
+}
+
+
 
 
 
@@ -232,6 +265,7 @@ body.body-artist-page #content {
 		background-color: white;
 		a {
 			color: black;
+
 		}
 	};
 	h2 {
@@ -241,6 +275,10 @@ body.body-artist-page #content {
 	}
 	a {
 		color: white;
+		margin-left: 20px;
+		&:hover {
+			color: $pink;
+		}
 	}
 }
 
@@ -260,18 +298,44 @@ body.body-artist-page #content {
 	}
 
 	.twitter-box {
-		background-color: #191919;
+		background-color: #212020;
 		display: table-cell;
 		vertical-align: middle;
 	}
 
 	.tour-box {
-		background-color: #191919;
+		background-color: #0E0D0D;
+		p:hover {
+			color: $pink;
+		};
 	}
 	.insta-box {
 		padding: 0px;
 		background-color: black;
 		display: table-cell;
+		h2.box-header {
+			display: none;
+		}
+
+		#instafeed {
+			position: relative;
+		}
+
+		.caption {
+			display: none;
+		}
+
+		img {
+			width: 33%;
+			margin-bottom: -6px;
+		
+		}
+		a:hover {
+			.caption {
+					opacity: 1;
+				}
+			};
+
 	}
 
 	.news {
@@ -317,6 +381,9 @@ h2.box-header {
 	color: white;
 	padding: 10px;
 	text-align: left;
+	h3:hover {
+		color: $pink;
+	};
 	i {
 		color: white;
 		font-size: 20px;
@@ -490,6 +557,8 @@ button:focus {
 	width: 70%;
 	margin: 0 auto;
 	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
 
 	h2 {
 		font-family: futura;
@@ -497,7 +566,6 @@ button:focus {
 		font-size: 130px;
 		margin: 0px;
 		letter-spacing: 6px;
-		padding-top: 140px;
 		transition: 0.4s ease-in-out;
 		-webkit-transition: 0.4s ease-in-out;
 		-moz-transition: 0.4s ease-in-out;
@@ -523,6 +591,7 @@ button:focus {
 #section1 {
 	height: 500px;
 	width: 100%;
+	display: table;
 	background-image: url('crowd.gif');
 	background-size: cover;
 	transition: 0.4s ease-in-out;
@@ -534,12 +603,18 @@ button:focus {
 #section2 {
 	height: 340px;
 	background-color: black;
+	p {
+		margin-top: 40px;
+	}
 	span {
 		background-color: $pink;
 		font-size: 40px;
 		padding: 10px;
-		margin-top: 30px;
+		margin-top: 50px;
 		cursor: pointer;
+		&:hover {
+			background-color: white;
+		};
 	}
 
 }
@@ -591,4 +666,86 @@ button:focus {
 	display: none;
 }
 
+
+/* DEVISE FORM SETTINGS */
+
+body.body-devise-sessions-page, body.body-devise-passwords-page, body.body-devise-registrations-page {
+	
+	#content {
+		padding-top: 100px;
+		padding-bottom: 100px;
+	}
+	form {
+		width: 50%;
+		margin: 0 auto;
+
+
+		input {
+			height: 50px;
+			width: 100%;	
+			margin-bottom: 20px;	
+			margin-top: 10px;	
+		}
+		label {
+			margin-bottom: 10px;
+		}
+	}
+	h3,p, a {
+		text-align: center;
+	}
+	em, li {
+		color: gray;
+	}
+	i {
+		color: gray;
+		display: block;
+	}
+	ul {
+		-webkit-padding-start: 0px;
+	}
+	li {
+		list-style-type: none;
+		text-indent: none;
+	}
+}
+.devise-links {
+	margin: 0 auto;
+	text-align: center;
+}
+
+body.body-profile-page .wrapper {
+	width: 70%;
+	overflow: auto;
+	margin: 0 auto;
+	.column-1 {
+		padding: 40px;
+		width: 95%;
+		margin: 0 auto;
+		margin-bottom: 20px;
+		table {
+			width: 70%;
+		}
+		table tr td {
+			color: #DEDEDE;
+			}
+
+	}
+	.column-12 {
+		background-color: black;
+		height: 200px;
+		margin: 0 auto;
+		margin-left: 20px;
+		width: 46%;
+		display: table;
+		padding: 0px;
+		&:hover {
+			background-color: white;
+
+		};
+		h2 {
+			display: table-cell;
+			vertical-align: middle;
+		}
+	}
+}
 
