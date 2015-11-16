@@ -2,23 +2,31 @@
 <html>
 <head>
   <title>FlyFanatic</title>
-  <link rel="stylesheet" media="all" href="/assets/application-8666adfaa6733cb74da53b1b28db5f5017a9f726827b4cf8f8fdd6c4f861dcc5.css" data-turbolinks-track="true" />
+  <link rel="stylesheet" media="all" href="/assets/application-2e73687a9435b08f5dab34814dcc20bcb6a4fdbaa7eccb7c6b4ab88d9ca3c128.css" data-turbolinks-track="true" />
   <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="rt7qTi5Vn5oKX8e9SAFPOsTiFHAggni+H+1hu4broKO4pj0sv9yjZ3dL7tXneKOYtGbyQIYzQfIwsGWyGVd9rA==" />
-  <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> 
-<script src="/assets/insta-e6f5f73a661256551ed59fd9017f37d196cdac46e1918493103803bf99fca7b7.js"></script> 
+<meta name="csrf-token" content="gJbcP/YAmAAf9eduWA5YxsH0MNjk6hSoM2ip0qjN5BOYjZqZmpdMFvDkt6cp2nppilh/kIdeqVWsJRXfbglyLQ==" />
+  <script src="/assets/application-7d91bc54330f2e18a2211746f907a91306b587ce7e5b7b5c0cc6a343b70239ce.js" data-turbolinks-track="true"></script> 
+
+  <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,300,300italic,700,700italic' rel='stylesheet' type='text/css'>
 
 	
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 
 </head>
 
 <body class="body-favorites-page">
 
+<div class="alert alert-success">
+	
+
+</div> 
+
 
 
 <div id="nav">
-        <div class="nav-box"> <a href="/">  <i class="icon ion-home"></i> </a> <div class="hidden-nav-box"> <p> HOME </p> </div> </div>
+    <div class="nav-box"> <a href="/">  <i class="icon ion-home"></i> </a> <div class="hidden-nav-box"> <p> HOME </p> </div> </div>
 
 
 
@@ -31,6 +39,26 @@
 
         <div class="nav-box"> <a rel="nofollow" data-method="delete" href="/logout">  <i class="icon ion-log-out"></i> </a> <div class="hidden-nav-box"> <p>LOG OUT </p></div></div> 
    
+</div>
+
+<div id="resp-nav">
+     <i class="icon ion-android-more-vertical"></i>
+     <div class="resp-nav-box">
+        <div class="nav-box"> <a href="/">  <i class="icon ion-home"></i> </a> </div>
+
+
+
+                
+        <div class="nav-box"> <a href="/profile">  <i class="icon ion-ios-body"></i> </a> 
+        </div> 
+
+        <div class="nav-box"> <a href="/favorites">  <i class="icon ion-android-favorite"></i> </a> 
+        </div>
+
+        <div class="nav-box"> <a rel="nofollow" data-method="delete" href="/logout">  <i class="icon ion-log-out"></i> </a> </div> 
+   
+        
+    </div>
 </div> 
 
 
@@ -41,33 +69,40 @@
 	<div class="favorite-menu">
 	<ul>
 		<!-- <a href="/favorites/Taylor%20Swift/edit"><li><i class="icon ion-compose"></i></li></a> -->
-		<iframe src="https://embed.spotify.com/?uri=spotify:artist:06HL4z0CvFAxyc27GXpf02" width="450" height="80" frameborder="0" allowtransparency="true"></iframe>
+		<iframe src="https://embed.spotify.com/?uri=spotify:artist:06HL4z0CvFAxyc27GXpf02" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
 	</ul>
 
 	</div>
 		<div class="artist-header">		
 			<div class="column-12 title-box">
-					<h1> Taylor Swift </h1>
+					<a action="edit" id="Taylor Swift" href="/favorites/Taylor%20Swift/edit"> 
+					<i class="icon ion-android-settings"> </i>
+</a>					<h1> Taylor Swift </h1>
 			</div>		
-			<div class="column-12 head-image" style="background-image: url(https://i.scdn.co/image/d26467f9fcb679e0d46abd3ca893d81ac6f812f6">
+			<div class="column-12 head-image" style="background-image: url(https://i.scdn.co/image/d26467f9fcb679e0d46abd3ca893d81ac6f812f6)">
 			</div>
 		</div>
 
 
-						
+									<!-- Show instagram images -->
+			<div class="column-12 insta-box">
+				<h2 class="box-header">Latest from instagram</h2>
+				<div id="instafeed"></div>			
+			</div>
+				
 
 
 				<div class="column-12 tour-box">
 					<div class="inside-box">
 							<h2 class="box-header">Upcoming tour dates </h2>
 									<div class="tweet">
-										 <a href=" http://www.bandsintown.com/event/9036925/buy_tickets?app_id=flyfanatic&amp;artist=Taylor+Swift&amp;came_from=67"><p>Taylor Swift @ ANZ Stadium in Sydney Olympic Park, Australia Saturday, November 28, 2015 at 7:00PM</p></a>
+										 <a target="_blank" href=" http://www.bandsintown.com/event/9036925/buy_tickets?app_id=flyfanatic&amp;artist=Taylor+Swift&amp;came_from=67"><p>Taylor Swift @ ANZ Stadium in Sydney Olympic Park, Australia Saturday, November 28, 2015 at 7:00PM</p></a>
 									</div>
 									<div class="tweet">
-										 <a href=" http://www.bandsintown.com/event/9036925/buy_tickets?app_id=flyfanatic&amp;artist=Taylor+Swift&amp;came_from=67"><p>Taylor Swift @ Suncorp Stadium in Milton Qld, Australia Saturday, December 5, 2015 at 7:00PM</p></a>
+										 <a target="_blank" href=" http://www.bandsintown.com/event/9036925/buy_tickets?app_id=flyfanatic&amp;artist=Taylor+Swift&amp;came_from=67"><p>Taylor Swift @ Suncorp Stadium in Milton Qld, Australia Saturday, December 5, 2015 at 7:00PM</p></a>
 									</div>
 									<div class="tweet">
-										 <a href=" http://www.bandsintown.com/event/9036925/buy_tickets?app_id=flyfanatic&amp;artist=Taylor+Swift&amp;came_from=67"><p>Taylor Swift @ Adelaide Entertainment Centre in Hindmarsh, Australia Monday, December 7, 2015 at 7:00PM</p></a>
+										 <a target="_blank" href=" http://www.bandsintown.com/event/9036925/buy_tickets?app_id=flyfanatic&amp;artist=Taylor+Swift&amp;came_from=67"><p>Taylor Swift @ Adelaide Entertainment Centre in Hindmarsh, Australia Monday, December 7, 2015 at 7:00PM</p></a>
 									</div>
 
 						
@@ -78,19 +113,19 @@
 					<div class="inside-box">
 						<h2 class="box-header"> News </h2>	
 								<div class="tweet">
-									 <a href="http://www.dailymail.co.uk/tvshowbiz/article-3310976/Taylor-Swift-avoids-trial-settles-lawsuit-claiming-copied-clothing-company-s-Lucky-13-brand.html"><h3>Taylor Swift avoids trial as she settles lawsuit claiming she copied clothing company&#39;s Lucky 13 brand </h3></a>
+									 <a target="_blank" href="http://www.cnn.com/2015/11/12/us/taylor-swift-copyright-lawsuit-dismissed/index.html"><h3>Taylor Swift shake, shake, shakes off copyright lawsuit </h3></a>
+									 <pre> 2015-11-12T10:15:05+00:00 </pre>
+									 <a target="_blank" href="http://www.cnn.com/2015/11/12/us/taylor-swift-copyright-lawsuit-dismissed/index.html"><p> (CNN)If you sue Taylor Swift, just remember her lyrics might be used against you. That&#39;s what a California judge did Tuesday, when she dismissed a copyright lawsuit against the pop star, a suit which accused her of stealing another artist&#39;s lyrics for her ...</p></a> 
+								</div>				
+								<div class="tweet">
+									 <a target="_blank" href="http://www.dailymail.co.uk/tvshowbiz/article-3313611/Taylor-Swift-takes-stage-China-Victoria-s-Secret-Angel-friends-assemble-spectacular.html"><h3>Taylor Swift takes to the stage in China dressed in all variety of skimpy outfits as her Victoria&#39;s Secret Angel friends assemble for show spectacular </h3></a>
+									 <pre> 2015-11-11T07:02:59+00:00 </pre>
+									 <a target="_blank" href="http://www.dailymail.co.uk/tvshowbiz/article-3313611/Taylor-Swift-takes-stage-China-Victoria-s-Secret-Angel-friends-assemble-spectacular.html"><p> She managed to steal the spotlight from the 40-plus-strong army of Victoria&#39;s Secret Angels at last year&#39;s London show. But Taylor Swift couldn&#39;t have been further away from the annual spectacular as her 1989 World Tour wound up in China while her good ...</p></a> 
+								</div>				
+								<div class="tweet">
+									 <a target="_blank" href="http://www.dailymail.co.uk/tvshowbiz/article-3310976/Taylor-Swift-avoids-trial-settles-lawsuit-claiming-copied-clothing-company-s-Lucky-13-brand.html"><h3>Taylor Swift avoids trial as she settles lawsuit claiming she copied clothing company&#39;s Lucky 13 brand </h3></a>
 									 <pre> 2015-11-09T17:13:49+00:00 </pre>
-									 <a href="http://www.dailymail.co.uk/tvshowbiz/article-3310976/Taylor-Swift-avoids-trial-settles-lawsuit-claiming-copied-clothing-company-s-Lucky-13-brand.html"><p> Taylor Swift has reached a confidential settlement with a California clothing company that accused her of infringing on their Lucky 13 trademark. Back in July, DailyMail.com exclusively revealed that The Bad Blood singer, 25, was being sued by Robert ...</p></a> 
-								</div>				
-								<div class="tweet">
-									 <a href="http://www.dailymail.co.uk/news/article-3309666/Meet-30-year-old-photographer-shares-Wildest-Dreams-singer-Taylor-Swift.html"><h3>Trying to shake it off....! Meet the man, 30, who shares the name TAYLOR SWIFT and gets bombarded with emails from the singer&#39;s superfans and stalkers </h3></a>
-									 <pre> 2015-11-08T19:31:00+00:00 </pre>
-									 <a href="http://www.dailymail.co.uk/news/article-3309666/Meet-30-year-old-photographer-shares-Wildest-Dreams-singer-Taylor-Swift.html"><p> It was his name first. But a 30-year-old photographer from Seattle named Taylor Swift had to change his email address from Taylorswift@gmail.com to something else after messages meant for the 25-year-old &#39;Wildest Dreams&#39; singer flooded his inbox.</p></a> 
-								</div>				
-								<div class="tweet">
-									 <a href="http://entertainment.inquirer.net/183182/taylor-swift-meets-young-cancer-survivors-in-singapore"><h3>Taylor Swift meets young cancer survivors in Singapore </h3></a>
-									 <pre> 2015-11-10T03:43:45+00:00 </pre>
-									 <a href="http://entertainment.inquirer.net/183182/taylor-swift-meets-young-cancer-survivors-in-singapore"><p> International pop star Taylor Swift has a reputation for making her fans’ wishes come true. From following their stories on Tumblr and giving them personal words of encouragement to sending a fan US$1,989 (S$2,829) to pay off her student loans, the ...</p></a> 
+									 <a target="_blank" href="http://www.dailymail.co.uk/tvshowbiz/article-3310976/Taylor-Swift-avoids-trial-settles-lawsuit-claiming-copied-clothing-company-s-Lucky-13-brand.html"><p> Taylor Swift has reached a confidential settlement with a California clothing company that accused her of infringing on their Lucky 13 trademark. Back in July, DailyMail.com exclusively revealed that The Bad Blood singer, 25, was being sued by Robert ...</p></a> 
 								</div>				
 
 					</div>
@@ -108,13 +143,15 @@
   <script type="text/javascript">
     var feed = new Instafeed({
         get: 'user',
-        userId: '15944678',
+        userId: "11830955",
         accessToken: '15944678.5ad9fb1.40bd2a22214844948417214abd4c320f',
         limit: 9,
-        template: '<a class="animation" href="{{link}}"><img src="{{image}}" /><div class="caption"> {{caption}} </div></a>',
+        template: '<a title="{{caption}}" class="fancybox" rel="gallery1" href="{{image}}"><img src="{{image}}" /></a>',
         resolution: 'standard_resolution',
     });
     feed.run();
+
+
 </script>
 
 	
@@ -128,8 +165,9 @@
 
 </div>
 
+<script src="/assets/footer-77be10968d1fc1dc129fc2334407f48582c89eee5179928bea9e687baddffec4.js"></script>
+
 </body>
-  <script src="/assets/application-0667e13dbc5351fac4168360377e0c356341fd0128314816f68012712944a1bf.js" data-turbolinks-track="true"></script>
 
 	
 

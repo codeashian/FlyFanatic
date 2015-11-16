@@ -67,7 +67,7 @@ $pink: #F17A7A;
 		top: 0;
 		padding-left: 20px;
 		z-index: 1;
-		width: 100%;
+		/*width: 100%;*/
 		float: left;
 		i {
 			color: white;
@@ -84,6 +84,13 @@ $pink: #F17A7A;
 				margin-left: 10px;
 				display: table;
 				text-align: center;
+				width: 50px;
+				&:hover {
+					background-color: black;
+				};
+				&:hover i {
+					color: $pink;
+				};
 				i {
 					font-size: 20px;
 					display: table-cell;

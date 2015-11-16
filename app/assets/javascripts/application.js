@@ -13,25 +13,40 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require jquery.turbolinks
+//= require fancybox
 
-$("#favor").click(function() {
-  var post_id = $(this).attr('id');
-  $.ajax({
-    type: "POST",
-    url: 'favorites/' + post_id,
-    success: function() {
-      // change image or something
-    }
-  })
-})
+//= require insta
 
-$(".twitter-box").click(function() {
-	console.log(this);
-	var form = $(this).next('.custom-search-pop-up');
-	form.toggle();
-	$(".big-overlay").toggle();
-});
+
+
+ $(document).ready(function() {
+
+ 		$('#section2 span').click(function() {
+		var searchform = $('.search-form');
+		$(searchform).slideToggle();
+		$('#section1').css('height', '300px');
+		$('.start-info h2').css('paddingTop', '40px');
+	})
+
+ 		 	//  Add value to custom input 
+	$('.instagram-input').click(function() {
+		var val = $(this).val();
+		$(".custom-search-instagram").val(val)
+	})
+
+	$('.twitter-input').click(function() {
+		var val = $(this).val();
+		$(".custom-search-twitter").val(val)
+	})
+
+	$('.custom-search h3').click(function() {
+
+		var div = $(this).next('.custom-search-pop');
+		$(div).slideToggle();
+	})
+
+ })
 
 
 

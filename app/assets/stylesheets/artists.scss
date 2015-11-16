@@ -26,7 +26,11 @@ html {
 body {
 	background-color: black;
 	margin: 0;
-	font-family: 'Abel';
+	font-family: 'Lato';
+}
+
+#resp-nav {
+	display: none;
 }
 
 .clearfix {
@@ -41,7 +45,6 @@ p {
 a {
 	color: white;
 	text-decoration: none;
-	font-weight: bold;
 	color: $pink;
 	&:hover {
 		color: white;
@@ -85,6 +88,11 @@ form input[type="submit"] {
     font-family: abel;
     text-transform: uppercase;
 	cursor: pointer;
+	-webkit-appearance: none;
+}
+
+form label {
+	font-family: Abel;
 }
 
 form input {
@@ -164,7 +172,12 @@ body.body-artist-page #content {
 			height: 100%;
 			width: 50%;
 			background-size: cover;
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+
 			background-position: 100% center;
+			-moz-background-position: 100% center;
+			-webkit-background-position: 100% center;
 
 		}
 		.column-1 {
@@ -228,6 +241,17 @@ body.body-artist-page #content {
 		display: table;
 		text-align: center;
 		background-color: #191919;
+		position: relative;
+		i {
+			position: absolute;
+			color: white;
+			top: 20px;
+			right: 20px;
+			font-size: 30px;
+			&:hover {
+				color: $pink;
+			};
+		}
 		h1 {
 			font-size: 100px;
 			display: table-cell;
@@ -244,9 +268,18 @@ body.body-artist-page #content {
 	.head-image {
 		min-height: 500px;
 		background-size: 100% ;
-		background-position: center 40;
+		
+		background-position: center;
+		-moz-background-position: center;
+		-webkit-background-position: center;
+
 		background-size: cover;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		
 		background-repeat: no-repeat;
+		-webkit-background-repeat: no-repeat;
+		-moz-background-repeat: no-repeat;
 
 	}
 }
@@ -271,7 +304,7 @@ body.body-artist-page #content {
 	h2 {
 		color: white;
 		font-size: 50px;
-		letter-spacing: 10px;
+		letter-spacing: 5px;
 	}
 	a {
 		color: white;
@@ -280,6 +313,7 @@ body.body-artist-page #content {
 			color: $pink;
 		}
 	}
+
 }
 
  /* ONE FAVORITE PAGE */
@@ -456,9 +490,12 @@ table {
 		    &:hover {
 				background-color: white;
 			}
-
 		}
 	}
+
+form.button_to input.delete {
+	background-color: #C5C5C5;
+}
 /*.media {
 	width: 100%;
 	height: 75px;
@@ -496,6 +533,8 @@ form#search input[type="submit"] {
 	text-transform: uppercase;
 	letter-spacing: 5px;
 	cursor: pointer;
+	border: none;
+	-webkit-appearance: none;
 	&:hover {
 		background-color: black;
 	};
@@ -593,7 +632,12 @@ button:focus {
 	width: 100%;
 	display: table;
 	background-image: url('crowd.gif');
+	-webkit-background-image: url('crowd.gif');
+	-moz-background-image: url('crowd.gif');
+	
 	background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
 	transition: 0.4s ease-in-out;
 	-webkit-transition: 0.4s ease-in-out;
 	-moz-transition: 0.4s ease-in-out;
@@ -747,5 +791,13 @@ body.body-profile-page .wrapper {
 			vertical-align: middle;
 		}
 	}
+}
+
+#spinner {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	background-color: black;
+	z-index: 1;
 }
 

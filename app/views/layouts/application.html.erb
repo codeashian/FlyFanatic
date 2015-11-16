@@ -4,15 +4,23 @@
   <title>FlyFanatic</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> 
-<%= javascript_include_tag "insta" %> 
+  <%= javascript_include_tag "application", 'data-turbolinks-track' => true%> 
+
+  <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,300,300italic,700,700italic' rel='stylesheet' type='text/css'>
 
 	
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
 </head>
 
 <body class="body-<%= params[:controller].sub("/","-") %>-page">
+
+
+
+ 
+<%= render :partial => 'layouts/flash_notice', :flash => flash %> 
 
 
 
@@ -26,8 +34,11 @@
 
 </div>
 
+<%= javascript_include_tag("footer") %>
+<script> 
+ 
+ </script>
 </body>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
 	
 

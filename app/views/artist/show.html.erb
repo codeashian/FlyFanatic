@@ -17,15 +17,15 @@
 			<% end %>  
 		<% else  %>
 				<div class="column-1">
-		            <h3> <a href="/login"> login </a> or <a href="/sign_up"> register </a> to create your custom fanpage 
-		            <br> for <%= @artist.name %>  </h3>
+		            <p> <a href="/login"> login </a> or <a href="/sign_up"> register </a> to create your custom fanpage 
+		            <br> for <%= @artist.name %>  </p>
 		        </div> 
 		 <% end %> 
     </div>
 
 </div>
 
-<div class="column-12" style="background-image: url(<%= !@artist.images.empty? ? @artist.images[0]['url'] : "" %>">
+<div class="column-12" style="background-image: url(<%= !@artist.images.empty? ? @artist.images[0]['url'] : "" %>)">
 </div>
 
 		

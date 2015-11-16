@@ -66,3 +66,9 @@ gem 'actionpack-page_caching'
 gem 'bing-search'
 
 gem 'geocoder'
+
+gem 'fancybox2-rails'
+
+gem 'jquery-turbolinks'
+
+gem 'ionicons-rails'

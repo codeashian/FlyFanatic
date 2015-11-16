@@ -4,7 +4,6 @@ class Favorite < ActiveRecord::Base
 	
 	validate :is_instagram, :on => :update
 
-	validates_uniqueness_of :spotify_id
 	
 	attr_accessible = :spotify_id, :instagram_id, :twitter_user, :distance 
 

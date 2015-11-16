@@ -59,5 +59,9 @@
 		<tr><td><%= f.submit "GO!", class: "btn btn-primary" %></td>
 
 	<% end %> 
+	
+	<br>
+	<%= button_to "delete ", {:action => 'destroy', :id => @favorite.id}, :method => 'delete', :class => 'delete' %>
 	</div>
 </div>
+

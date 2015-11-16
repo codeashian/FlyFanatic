@@ -135,6 +135,10 @@
 
 @media screen and (max-width: 500px) {
 
+	form#search input[type="text"] {
+		font-size: 40px;
+	}
+
 	.artist-header .title-box h1 {
 		font-size: 50px;
 	}
@@ -165,6 +169,14 @@
 
 	.start-info h2 {
     font-size: 40px;
+	}
+
+	.container {
+		width: 95%;
+	}
+
+	#resp-nav {
+	display: block;
 	}
 
 
